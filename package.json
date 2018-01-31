@@ -1,0 +1,32 @@
+{
+  "name": "jxValidator",
+  "description": "A modern JavaScript verification toolkit library",
+  "version": "0.0.1",
+  "homepage": "https://github.com/sTdobTs/validator",
+  "keywords": [
+    "just",
+    "dot",
+    "validate",
+    "validator",
+    "javascript",
+    "node"
+  ],
+  "license": "MIT",
+  "author": "justdot<575099237@qq.com>",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sTdobTs/validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sTdobTs/validator/issues"
+  },
+  "dependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0"
+  },
+  "devDependencies": {},
+  "main": "index.js",
+  "bin": {},
+  "scripts": {}
+}
