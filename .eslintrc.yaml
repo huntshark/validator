@@ -1,0 +1,35 @@
+# eslint 校验规则
+
+# 使用airbnb规则
+extends: 'eslint-config-airbnb'
+
+# 环境定义了预定义的全局变量
+env:
+  # es6 语法
+  es6: true
+  # browser
+  browser: true
+  # node
+  node: true
+  # commonjs
+  commonjs: true
+  # amd
+  amd: true
+  # mocha   
+  mocha: true
+
+# js语言选项
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+
+# 规则
+# 0: off 关闭规则
+# 1: warn 开启规则, 使用警告级别的错误, 不会导致程序退出
+# 2: error 开启规则, 使用错误级别的错误, 会导致程序退出
+# 
+# http://cn.eslint.org/docs/rules/
+rules:
+    max-len:
+      - 2
+      - 120
