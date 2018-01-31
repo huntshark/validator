@@ -1,6 +1,6 @@
 # eslint 校验规则
 
-# 使用google规则
+# 使用airbnb规则
 extends: 'eslint-config-airbnb'
 
 # 环境定义了预定义的全局变量
