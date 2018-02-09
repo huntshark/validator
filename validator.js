@@ -79,9 +79,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 var _isUndefined = __webpack_require__(1);
+var _isNull = __webpack_require__(2);
 
 module.exports = {
-  isUndefined: _isUndefined
+  isUndefined: _isUndefined,
+  isNull: _isNull
 };
 
 
@@ -98,13 +100,31 @@ module.exports = {
  * @version 0.0.1
  * @since   0.0.1
  */
-var UNDEFINED;
-
 function _isUndefined(val) {
-  return val === UNDEFINED;
+  return val === void 0;
 }
 
 module.exports = _isUndefined;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+
+/**
+ * 校验`val`是否为 null
+ *
+ * @param   {*} val   待校验的参数
+ * @return  {Boolean} 返回校验结果
+ * @version 0.0.1
+ * @since   0.0.1
+ */
+function _isNull(val) {
+  return val === null;
+}
+
+module.exports = _isNull;
 
 
 /***/ })
