@@ -5,7 +5,22 @@ validator
 
 ## 安装
 
-暂无安装说明
+在浏览器中使用
+```html
+  <script src="validator.min.js"></script>
+```
+
+使用 npm 安装
+```shell
+  npm i --save jxm-validator
+```
+
+在 Node.js 中使用
+```javascript
+  const jxmValidator = require('jxm-validator');
+
+  jxmValidator.isNull(null);
+```
 
 ## 目录
 
@@ -26,8 +41,9 @@ validator
 
 ## 版本规划
 
-v0.0.1
-* 提供基本的数据类型校验
+v0.0.2
+* 添加isNil
+* 添加Boolean相关验证
 
 ## 讨论交流
 
