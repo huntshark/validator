@@ -1,32 +1,44 @@
 {
   "name": "jxm-validator",
+  "version": "0.0.2",
   "description": "A modern JavaScript verification toolkit library",
-  "version": "0.0.1",
-  "homepage": "https://github.com/sTdobTs/validator",
+  "main": "validator.js",
+  "scripts": {
+    "build": "npm run jxmEslint && npm run jxmTest && npm run jxmBuild",
+    "build:uglify": "npm run jxmEslint && npm run jxmTest && npm run jxmUglify",
+    "jxmBuild": "webpack --config webpack.config.js",
+    "jxmUglify": "webpack --config webpack.config.uglify.js",
+    "jxmTest": "mocha ./test/*.test.js",
+    "jxmEslint": "eslint --config .eslintrc.yaml src --ignore-path .eslintignore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sTdobTs/validator.git"
+  },
   "keywords": [
     "just",
     "dot",
+    "jxm",
     "validate",
     "validator",
     "javascript",
     "node"
   ],
-  "license": "MIT",
   "author": "justdot<575099237@qq.com>",
-  "contributors": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sTdobTs/validator.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sTdobTs/validator/issues"
-  },
-  "dependencies": {
+  "homepage": "https://github.com/sTdobTs/validator",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "chai": "^4.1.2",
     "eslint": "^4.16.0",
-    "eslint-config-airbnb": "^16.1.0"
-  },
-  "devDependencies": {},
-  "main": "index.js",
-  "bin": {},
-  "scripts": {}
+    "eslint-config-airbnb-es5": "^1.2.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "mocha": "^5.0.0",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "webpack": "^3.10.0"
+  }
 }
