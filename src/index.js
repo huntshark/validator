@@ -4,5 +4,5 @@ var _isNull = require('./isNull');
 
 module.exports = {
   isUndefined: _isUndefined,
-  isNull: _isNull,
+  isNull: _isNull
 };
