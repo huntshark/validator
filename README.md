@@ -6,16 +6,19 @@ validator
 ## 安装
 
 在浏览器中使用
+
 ```html
   <script src="validator.min.js"></script>
 ```
 
 使用 npm 安装
+
 ```shell
   npm i --save jxm-validator
 ```
 
 在 Node.js 中使用
+
 ```javascript
   const jxmValidator = require('jxm-validator');
 
@@ -41,7 +44,7 @@ validator
 
 ## 版本规划
 
-v0.0.2
+v0.0.3
 * 添加isNil
 * 添加Boolean相关验证
 
@@ -55,7 +58,14 @@ v0.0.2
 
 ## 变更记录
 
-暂无变更记录
+v0.0.2
+* 新增 `isNull` 校验
+* 新增 `isUndefined` 校验
+* 新增 `js datatype 数据类型枚举`
+* 新增 `locale 国际化枚举`
+* 新增 `用于对参数进行类型校验`
+* 采用 `webpack v3.0` 进行打包压缩
+* 采用 `mocha, chai` 进行单元测试
 
 ## 许可协议
 
