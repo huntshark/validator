@@ -52,10 +52,6 @@ v0.0.3
 
 如果您有任何疑问，可以在 [这里](https://github.com/sTdobTs/validator/issues) 提交 issue。
 
-## 补充说明
-
-暂无补充说明
-
 ## 变更记录
 
 v0.0.2
@@ -66,6 +62,7 @@ v0.0.2
 * 新增 `用于对参数进行类型校验`
 * 采用 `webpack v3.0` 进行打包压缩
 * 采用 `mocha, chai` 进行单元测试
+* 采用 `eslint, 基于 airbnb es5` 进行代码检查
 
 ## 许可协议
 
