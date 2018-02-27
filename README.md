@@ -44,9 +44,8 @@ validator
 
 ## 版本规划
 
-v0.0.3
-* 添加isNil
-* 添加Boolean相关验证
+v0.0.4
+* 添加Number相关验证
 
 ## 讨论交流
 
@@ -54,7 +53,11 @@ v0.0.3
 
 ## 变更记录
 
-v0.0.2
+2018.02.27 v0.0.3
+* 新增 `isNil` 校验
+* 新增 `isBoolean` 校验
+
+2018.02.09 v0.0.2
 * 新增 `isNull` 校验
 * 新增 `isUndefined` 校验
 * 新增 `js datatype 数据类型枚举`
