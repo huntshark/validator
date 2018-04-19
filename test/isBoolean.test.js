@@ -24,33 +24,33 @@ describe('isBoolean的测试集合', function() {
     expect(isBoolean(new Boolean({}))).to.be.equal(true);
   });
 
-  // // null
-  // it('isBoolean(null) 等于 false', function() {
-  //   expect(isBoolean(null)).to.be.equal(false);
-  // });
+  // null
+  it('isBoolean(null) 等于 false', function() {
+    expect(isBoolean(null)).to.be.equal(false);
+  });
 
-  // // undefined
-  // it('isBoolean(undefined) 等于 false', function() {
-  //   expect(isBoolean(undefined)).to.be.equal(false);
-  // });
+  // undefined
+  it('isBoolean(undefined) 等于 false', function() {
+    expect(isBoolean(undefined)).to.be.equal(false);
+  });
 
-  // // 0
-  // it('isBoolean(0) 等于 false', function() {
-  //   expect(isBoolean(0)).to.be.equal(false);
-  // });
+  // 0
+  it('isBoolean(0) 等于 false', function() {
+    expect(isBoolean(0)).to.be.equal(false);
+  });
 
-  // // ''
-  // it('isBoolean(\'\') 等于 false', function() {
-  //   expect(isBoolean('')).to.be.equal(false);
-  // });
+  // ''
+  it('isBoolean(\'\') 等于 false', function() {
+    expect(isBoolean('')).to.be.equal(false);
+  });
 
-  // // []
-  // it('isBoolean([]) 等于 false', function() {
-  //   expect(isBoolean([])).to.be.equal(false);
-  // });
+  // []
+  it('isBoolean([]) 等于 false', function() {
+    expect(isBoolean([])).to.be.equal(false);
+  });
 
-  // // {}
-  // it('isBoolean({}) 等于 false', function() {
-  //   expect(isBoolean({})).to.be.equal(false);
-  // });
+  // {}
+  it('isBoolean({}) 等于 false', function() {
+    expect(isBoolean({})).to.be.equal(false);
+  });
 });

@@ -1,5 +1,5 @@
 
-// 国际化
+// 国际化类型
 var LOCALE_TYPE_ENUM = {
   'ZHCN': 'zh-CN'
 };
