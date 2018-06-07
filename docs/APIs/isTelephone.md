@@ -1,8 +1,6 @@
 
 ## isTelephone(val, locale)
 
-----------
-
 #### 描述：
 
     校验 `val` 是否为座机号码
