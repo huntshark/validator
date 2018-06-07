@@ -1,21 +1,21 @@
 
-### isEmail(val, locale)
+## isEmail(val, locale)
 
 ----------
 
-描述：
+#### 描述：
 
     校验 `val` 是否为邮箱
 
-参数：
+#### 参数：
 
     val，任意类型
 
-说明：
+#### 说明：
 
     若参数 `val` 是邮箱, 则返回 true, 否则返回 false
 
-示例：
+#### 示例：
 
 ```javascript
 jxmValidator.isEmail('575099329@qq.com'); // => true

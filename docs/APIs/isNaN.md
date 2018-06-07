@@ -1,21 +1,21 @@
 
-### isNaN(val)
+## isNaN(val)
 
 ----------
 
-描述：
+#### 描述：
 
     校验参数 `val` 是否为 `NaN`
 
-参数：
+#### 参数：
 
     val，任意类型
 
-说明：
+#### 说明：
 
     仅当参数 val 为 `NaN` 时，返回 `true`, 否则返回 `false`
 
-示例：
+#### 示例：
 
 ```javascript
 jxmValidator.isNaN(NaN); // => true

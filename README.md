@@ -40,7 +40,7 @@ validator
 
 ## 接口文档
 
-接口说明文档请看 [这里](https://github.com/sTdobTs/validator/blob/master/docs/APIs.md)
+API文档，请看 [这里](https://github.com/sTdobTs/validator/blob/master/docs/APIs.md)
 
 ## 版本规划
 
