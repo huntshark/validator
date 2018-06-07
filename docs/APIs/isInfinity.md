@@ -1,8 +1,6 @@
 
 ## isInfinity(val)
 
-----------
-
 #### 描述：
 
     校验参数 `val` 是否为 `Infinity` 或 `-Infinity`

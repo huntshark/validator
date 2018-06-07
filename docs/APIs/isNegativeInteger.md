@@ -1,8 +1,6 @@
 
 ## isNegativeInteger(val, options)
 
-----------
-
 #### 描述：
 
     校验参数 `val` 是否为负整数

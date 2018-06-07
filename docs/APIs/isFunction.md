@@ -1,8 +1,6 @@
 
 ## isFunction(val)
 
-----------
-
 #### 描述：
 
     校验参数 `val` 是否为 `function`

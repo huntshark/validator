@@ -1,8 +1,6 @@
 
 ## isPlainObject(val)
 
-----------
-
 #### 描述：
 
     校验 `val` 是否为纯粹的 object
