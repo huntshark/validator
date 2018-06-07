@@ -1,8 +1,8 @@
 
 /**
- * 校验`val`是否为 NaN
+ * 校验 `val` 是否为 NaN
  *
- * 若`val`是NaN，则返回true，否则返回false
+ * 若参数 `val` 是 NaN，则返回 true，否则返回 false
  *
  * @param   {*}       val 待校验的参数
  * @return  {Boolean} 返回校验结果
@@ -18,7 +18,7 @@ function _isNaN(val) {
   //     isNaN('foo');         // => true
   // <=> isNaN(Number('foo')); // => true
   //
-  // 解决方案: 使用 `===`, NaN 是唯一不与自身恒等
+  // 解决方案: 使用 `!==`, NaN 是唯一一个不与自身恒等
   //
   // 从ES6开始，Number提供了 Number.isNaN 来判断是否为 NaN
   // e.g:

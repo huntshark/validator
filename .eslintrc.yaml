@@ -15,7 +15,7 @@ extends: 'eslint-config-airbnb-es5'
 #   commonjs: true
 #   # amd
 #   amd: true
-#   # mocha   
+#   # mocha
 #   mocha: true
 
 # js语言选项
@@ -37,4 +37,8 @@ rules:
 
     # 禁止自身比较
     no-self-compare:
+      - 0
+
+    # 禁用不必要的转义字符
+    no-useless-escape:
       - 0

@@ -4,9 +4,9 @@ var POSITIVE_INFINITY = 1 / 0;
 var NEGATIVE_INFINITY = -1 / 0;
 
 /**
- * 校验`val`是否为无穷Infinity
+ * 校验 `val` 是否为 Infinity, -Infinity
  *
- * 若是Infinity, 则返回true, 否则返回false
+ * 若参数 `val` 是 Infinity, -Infinity, 则返回 true, 否则返回 false
  *
  * @param   {*}       val 待校验的参数
  * @return  {Boolean} 返回校验结果

@@ -1,6 +1,6 @@
 {
   "name": "jxm-validator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A modern JavaScript verification toolkit library",
   "main": "validator.js",
   "scripts": {

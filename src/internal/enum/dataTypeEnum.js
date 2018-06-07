@@ -18,6 +18,7 @@ var DATA_TYPE_ENUM = {};
   'WEAKSET',
   'WEAKMAP',
 
+  'FUNCTION',
   'DATE'
 ].forEach((jsType) => {
   DATA_TYPE_ENUM[jsType] = jsType.toLowerCase();
