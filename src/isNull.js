@@ -1,8 +1,10 @@
 
 /**
- * 校验`val`是否为 null
+ * 校验 `val` 是否为 null
  *
- * 若`val`是null, 则返回true, 否则返回false
+ * 若是参数 `val` 的值恒等于 null, 则返回 true,
+ *
+ * 否则, 返回 false
  *
  * @param   {*}       val 待校验的参数
  * @return  {Boolean} 返回校验结果

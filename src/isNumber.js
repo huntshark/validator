@@ -3,11 +3,13 @@ var DATA_TYPE_ENUM = require('./internal/enum/dataTypeEnum');
 var assertDataType = require('./internal/assertDataType');
 
 /**
- * 校验`val`是否为 number
+ * 校验 `val` 是否为 number
  *
- * 只有当`val`类型为`number`或者`[object Number]`时，返回true, 否则返回false
+ * 若是参数 `val` 的类型为 `number` 或者 `[object Number]`时，返回 true,
  *
- * Number 包括: POSITIVE_INFINITY, NEGATIVE_INFINITY
+ * 否则，返回 false
+ *
+ * Number 类型还包括: POSITIVE_INFINITY, NEGATIVE_INFINITY, NaN, ...
  *
  * @param   {*}       val 待校验的参数
  * @return  {Boolean} 返回校验结果

@@ -3,9 +3,9 @@ var _isString = require('./isString');
 var REGEX_ENUM = require('./internal/enum/regexEnum');
 
 /**
- * 校验`val`是否为 邮箱
+ * 校验 `val` 是否为邮箱
  *
- * 若是邮箱, 则返回true, 否则返回false
+ * 若参数 `val` 是邮箱, 则返回 true, 否则返回 false
  *
  * @param   {*}       val 待校验的参数
  * @return  {Boolean} 返回校验结果

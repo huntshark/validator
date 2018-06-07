@@ -44,19 +44,30 @@ validator
 
 ## 版本规划
 
-v0.0.5
+v0.0.6
 
-* 新增字符，字母
-* 新增日期
-* 新增JSON
-* 完善当前校验功能
-* 完成接口文档
+* 增加 account/password 校验
+* 增加 date 校验
+* 增加 language 校验
+* 增加 letter&number 校验
+* 增加 url 校验
+* 增加 ip 校验
+* 增加 IDCard 校验
 
 ## 讨论交流
 
 如果您有任何疑问，可以在 [这里](https://github.com/sTdobTs/validator/issues) 提交 issue。
 
 ## 变更记录
+
+v0.0.5
+
+* 新增 `isJSON` 校验
+* 新增 `isFunction` 校验
+* 新增 `isEmptyString` 校验
+* 更新单元测试
+* 更新接口文档
+* Fixed 已知的问题
 
 v.0.0.4
 * 新增`isNaN` 校验
@@ -93,10 +104,6 @@ v.0.0.4
 * 新增`isMobile` 校验
 * 新增`isTelephone` 校验
 * 新增`isPhone` 校验
-
-v0.0.3
-* 新增 `isNil` 校验
-* 新增 `isBoolean` 校验
 
 ## 许可协议
 

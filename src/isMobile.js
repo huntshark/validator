@@ -4,31 +4,32 @@ var LOCALE_ENUM = require('./internal/enum/localeTypeEnum');
 var REGEX_ENUM = require('./internal/enum/regexEnum');
 
 /**
- * 校验`val`是否为手机号码
+ * 校验 `val` 是否为手机号码
  *
- * 对于不同地区使用不同地方的地区校验格式
+ * 若参数 `val` 符合参数 `locale`(默认值:  LOCALE_ENUM.ZHCN) 指定地区的手机号码格式, 则返回 true, 否则返回 false
  *
- * 若是严格模式, 则需要保持当前使用的号码段【暂不支持】
- * 若是非严格模式，则仅需要对号码段和位数进行校验
+ * 若参数 `locale` 指定地区不存在, 同样直接返回 false
  *
- * @param   {*}       val              待校验的参数
- * @param   {String}  locale           国际化地区
- * @param   {Object}  options          可选参数
- * @param   {Boolean} options.isStrict 是否严格模式
+ * 对于不同地区使用其所在地区的手机号码校验格式
+ *
+ * 目前, 仅会对手机号码进行号码段和位数进行校验，不做真实性校验
+ *
+ * @param   {*}       val    待校验的参数
+ * @param   {String}  locale 国际化
  * @return  {Boolean} 返回校验结果
- * @version 0.0.4
+ * @version 0.0.5
  * @since   0.0.4
  */
-function _isMobile(val, locale = LOCALE_ENUM.ZHCN, options = {isStrict: false}) {
-  if (!_isString(val)) {
+function _isMobile(val, locale) {
+  var key = _isString(locale) ? locale : LOCALE_ENUM.ZHCN;
+  var rex = REGEX_ENUM.MOBILE_REX[key];
+
+  if (!rex) {
     return false;
   }
 
-  let key = options.isStrict ? `${locale}-strict` : locale;
-  let rex = REGEX_ENUM.MOBILE_REX[key];
-
-  if (!rex) {
-    throw options.isStrict ? new Error('暂不支持该地区手机号码验证') : new Error('暂不支持该地区手机号码的严格验证模式');
+  if (!_isString(val)) {
+    return false;
   }
 
   return rex.test(val);

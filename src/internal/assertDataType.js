@@ -23,9 +23,13 @@ var _toString = Object.prototype.toString;
 /**
  * 断言`val`的数据类型是否为`type`对应的数据类型
  *
+ * 若是参数`val`的数据类型与`type`相同，则返回 true,
+ *
+ * 若是不相同，则返回 false
+ *
  * @param   {string} type 数据类型
  * @param   {*}      val  待校验的数据
- * @returns {string} 返回校验结果
+ * @return  {string} 返回校验结果
  * @version 0.0.4
  * @since   0.0.1
  */
