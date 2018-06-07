@@ -1,21 +1,21 @@
 
-### isPlainObject(val)
+## isPlainObject(val)
 
 ----------
 
-描述：
+#### 描述：
 
     校验 `val` 是否为纯粹的 object
 
-参数：
+#### 参数：
 
     val，任意类型
 
-说明：
+#### 说明：
 
     若参数 `val` 是纯粹的对象, 则返回 true, 否则返回 false
 
-示例：
+#### 示例：
 
 ```javascript
 jxmValidator.isPlainObject({}); // => true

@@ -1,21 +1,23 @@
 
-### isNumber(val)
+## isNumber(val)
 
 ----------
 
-描述：校验参数 `val` 是否为 `number`
+#### 描述：
 
-参数：
+    校验参数 `val` 是否为 `number`
+
+#### 参数：
 
     val，任意类型
 
-说明：
+#### 说明：
 
     仅当参数 val 为 `number` 时，返回 `true`, 否则返回 `false`
 
     * number 类型还包括: NaN, Infinity, -Infinity
 
-示例：
+#### 示例：
 
 ```javascript
 // number

@@ -1,13 +1,13 @@
 
-### isUnEmptyString(val, options)
+## isUnEmptyString(val, options)
 
 ----------
 
-描述：
+#### 描述：
 
     校验参数 `val` 是否为非空字符串
 
-参数：
+#### 参数：
 
     val，任意类型
 
@@ -15,7 +15,7 @@
 
     options.isStrict, 严格模式(true)／非严格模式(false)
 
-说明：
+#### 说明：
 
     该接口存在两种模式, 即严格模式、非严格模式，默认采用严格模式
 
@@ -31,7 +31,7 @@
       > 若是严格模式，则该参数值校验后，返回 false,
       > 若是非严格模式, 则该参数值校验后, 返回 true
 
-示例：
+#### 示例：
 
 ```javascript
 jxmValidator.isUnEmptyString('3'); // => true
