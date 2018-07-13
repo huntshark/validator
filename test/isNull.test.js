@@ -1,31 +1,35 @@
 
-const expect = require('chai').expect;
 const isNull = require('../src/isNull');
+const chai = require('chai');
+const should = chai.should;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isNull test', function() {
   // null
   it(`isNull(null) === true`, function() {
-    expect(isNull(null)).to.be.equal(true);
+    isNull(null).should.equal(true);
   });
 
   // undefined
   it(`isNull(undefined) === false`, function() {
-    expect(isNull(undefined)).to.be.equal(false);
+    isNull(undefined).should.equal(false);
   });
 
   // 0
   it(`isNull(0) === false`, function() {
-    expect(isNull(0)).to.be.equal(false);
+    isNull(0).should.equal(false);
   });
 
   // ''
   it(`isNull('') === false`, function() {
-    expect(isNull('')).to.be.equal(false);
+    isNull('').should.equal(false);
   });
 
   // 'null'
   it(`isNull('null') === false`, function() {
-    expect(isNull('null')).to.be.equal(false);
+    isNull('null').should.equal(false);
   });
 });

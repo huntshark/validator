@@ -1,31 +1,35 @@
 
-const expect = require('chai').expect;
 const isUnEmptyString = require('../src/isUnEmptyString');
+const chai = require('chai');
+const should = chai.should;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isUnEmptyString test', function() {
   // '3'
   it(`isUnEmptyString('3') === true`, function() {
-    expect(isUnEmptyString('3')).to.be.equal(true);
+    isUnEmptyString('3').should.equal(true);
   });
 
   // ''
   it(`isUnEmptyString('') === false`, function() {
-    expect(isUnEmptyString('')).to.be.equal(false);
+    isUnEmptyString('').should.equal(false);
   });
 
   // ''
   it(`isUnEmptyString('', {isStrict: false}) === false`, function() {
-    expect(isUnEmptyString('', {isStrict: false})).to.be.equal(false);
+    isUnEmptyString('', {isStrict: false}).should.equal(false);
   });
 
   // '   '
   it(`isUnEmptyString('   ') === false`, function() {
-    expect(isUnEmptyString('   ')).to.be.equal(false);
+    isUnEmptyString('   ').should.equal(false);
   });
 
   // ''
   it(`isUnEmptyString('   ', {isStrict: false}) === true`, function() {
-    expect(isUnEmptyString('   ', {isStrict: false})).to.be.equal(true);
+    isUnEmptyString('   ', {isStrict: false}).should.equal(true);
   });
 });

@@ -2,8 +2,9 @@
 validator
 ===========================
 
-[![NPM version](http://img.shields.io/npm/v/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
 [![Build Status](https://travis-ci.org/sTdobTs/validator.svg?branch=master)](https://travis-ci.org/sTdobTs/validator)
+[![NPM version](http://img.shields.io/npm/v/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
+[![Coverage Status](https://coveralls.io/repos/github/sTdobTs/validator/badge.svg?branch=master)](https://coveralls.io/github/sTdobTs/validator?branch=master)
 [![Downloads](http://img.shields.io/npm/dm/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
 
 基于 ECMAScript5.1 实现的验证工具包，提供了丰富的校验和工具方法，在 Node.js 和现代浏览器中可以使用。
@@ -51,7 +52,7 @@ API 文档，请看 [这里](https://github.com/sTdobTs/validator/blob/master/do
 
 ## 变更记录
 
-如果您想要查看所有的变更记录, 请看 [这里](https://github.com/sTdobTs/validator/wiki/Changelog)
+如果您需要查看所有的变更记录, 请看 [这里](https://github.com/sTdobTs/validator/wiki/Changelog)
 
 ## 许可协议
 

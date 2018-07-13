@@ -5,8 +5,10 @@ node_js:
   - 8
   - 6
   - 5
+
 script:
-  - npm jxmTest
+  - npm run jxmCoverage
+
 notifications:
   email:
     - 575099237@qq.com

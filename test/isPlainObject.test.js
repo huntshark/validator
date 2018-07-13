@@ -1,51 +1,55 @@
 
-const expect = require('chai').expect;
 const isPlainObject = require('../src/isPlainObject');
+const chai = require('chai');
+const should = chai.should;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isPlainObject test', function() {
   // {}
   it(`isPlainObject({}) === true`, function() {
-    expect(isPlainObject({})).to.be.equal(true);
+    isPlainObject({}).should.equal(true);
   });
 
   // []
   it(`isPlainObject([]) === false`, function() {
-    expect(isPlainObject([])).to.be.equal(false);
+    isPlainObject([]).should.equal(false);
   });
 
   // function
   it(`isPlainObject(parseInt) === false`, function() {
-    expect(isPlainObject(parseInt)).to.be.equal(false);
+    isPlainObject(parseInt).should.equal(false);
   });
 
   // new Date
   it(`isPlainObject(new Date()) === false`, function() {
-    expect(isPlainObject(new Date())).to.be.equal(false);
+    isPlainObject(new Date()).should.equal(false);
   });
 
   // Object({})
   it(`isPlainObject(Object({})) === true`, function() {
-    expect(isPlainObject(Object({}))).to.be.equal(true);
+    isPlainObject(Object({})).should.equal(true);
   });
 
   // Object('3')
   it(`isPlainObject(Object('3')) === false`, function() {
-    expect(isPlainObject(Object('3'))).to.be.equal(false);
+    isPlainObject(Object('3')).should.equal(false);
   });
 
   // new Object('3')
   it(`isPlainObject(new Object('3')) === false`, function() {
-    expect(isPlainObject(new Object('3'))).to.be.equal(false);
+    isPlainObject(new Object('3')).should.equal(false);
   });
 
   // null
   it(`isPlainObject(null) === false`, function() {
-    expect(isPlainObject(null)).to.be.equal(false);
+    isPlainObject(null).should.equal(false);
   });
 
   // Object.create(null)
   it(`isPlainObject(Object.create(null)) === true`, function() {
-    expect(isPlainObject(Object.create(null))).to.be.equal(true);
+    isPlainObject(Object.create(null)).should.equal(true);
   });
 });

@@ -1,83 +1,87 @@
 
-const expect = require('chai').expect;
 const isZero = require('../src/isZero');
+const chai = require('chai');
+const should = chai.should;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isZero test', function() {
   // 3
   it(`isZero(3) === false`, function() {
-    expect(isZero(3)).to.be.equal(false);
+    isZero(3).should.equal(false);
   });
 
   it(`isZero(0) === true`, function() {
-    expect(isZero(0)).to.be.equal(true);
+    isZero(0).should.equal(true);
   });
 
   it(`isZero('0') === true`, function() {
-    expect(isZero('0')).to.be.equal(true);
+    isZero('0').should.equal(true);
   });
 
   it(`isZero('0', {isStrict: true}) === false`, function() {
-    expect(isZero('0', {isStrict: true})).to.be.equal(false);
+    isZero('0', {isStrict: true}).should.equal(false);
   });
 
   // NaN
   it(`isZero(NaN) === false`, function() {
-    expect(isZero(NaN)).to.be.equal(false);
+    isZero(NaN).should.equal(false);
   });
 
   // Infinity
   it(`isZero(Infinity) === false`, function() {
-    expect(isZero(Number.POSITIVE_INFINITY)).to.be.equal(false);
+    isZero(Number.POSITIVE_INFINITY).should.equal(false);
   });
 
   // -Infinity
   it(`isZero(-Infinity) === false`, function() {
-    expect(isZero(Number.NEGATIVE_INFINITY)).to.be.equal(false);
+    isZero(Number.NEGATIVE_INFINITY).should.equal(false);
   });
 
   // ''
   it(`isZero('') === false`, function() {
-    expect(isZero('')).to.be.equal(false);
+    isZero('').should.equal(false);
   });
 
   // null
   it(`isZero(null) === false`, function() {
-    expect(isZero(null)).to.be.equal(false);
+    isZero(null).should.equal(false);
   });
 
   // undefined
   it(`isZero(undefined) === false`, function() {
-    expect(isZero(undefined)).to.be.equal(false);
+    isZero(undefined).should.equal(false);
   });
 
   // Number(0)
   it(`isZero(Number(0)) === true`, function() {
-    expect(isZero(Number(0))).to.be.equal(true);
+    isZero(Number(0)).should.equal(true);
   });
 
   // new Number(0)
   it(`isZero(new Number(0)) === true`, function() {
-    expect(isZero(new Number(0))).to.be.equal(true);
+    isZero(new Number(0)).should.equal(true);
   });
 
   // new Number('0')
   it(`isZero(new Number(0)) === true`, function() {
-    expect(isZero(new Number('0'))).to.be.equal(true);
+    isZero(new Number('0')).should.equal(true);
   });
 
   // Object(0)
   it(`isZero(Object(0)) === true`, function() {
-    expect(isZero(Object(0))).to.be.equal(true);
+    isZero(Object(0)).should.equal(true);
   });
 
   // Object('0')
   it(`isZero(Object('0')) === true`, function() {
-    expect(isZero(Object('0'))).to.be.equal(true);
+    isZero(Object('0')).should.equal(true);
   });
 
   // Object('0')
   it(`isZero(Object('0'), {isStrict: true}) === false`, function() {
-    expect(isZero(Object('0'), {isStrict: true})).to.be.equal(false);
+    isZero(Object('0'), {isStrict: true}).should.equal(false);
   });
 });

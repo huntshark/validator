@@ -1,31 +1,35 @@
 
-const expect = require('chai').expect;
 const isJSON = require('../src/isJSON');
+const chai = require('chai');
+const should = chai.should;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isJSON test', function() {
   // '{"a": 3}'
   it(`isJSON('{"a": 3}') === true`, function() {
-    expect(isJSON('{"a": 3}')).to.be.equal(true);
+    isJSON('{"a": 3}').should.equal(true);
   });
 
   // '[3, 4]'
   it(`isJSON('[3, 4]') === false`, function() {
-    expect(isJSON('[3, 4]')).to.be.equal(false);
+    isJSON('[3, 4]').should.equal(false);
   });
 
   // '3'
   it(`isJSON('3') === false`, function() {
-    expect(isJSON('3')).to.be.equal(false);
+    isJSON('3').should.equal(false);
   });
 
   // null
   it(`isJSON(null) === false`, function() {
-    expect(isJSON(null)).to.be.equal(false);
+    isJSON(null).should.equal(false);
   });
 
   // {}
   it(`isJSON({}) === false`, function() {
-    expect(isJSON({})).to.be.equal(false);
+    isJSON({}).should.equal(false);
   });
 });

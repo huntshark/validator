@@ -1,66 +1,70 @@
 
-const expect = require('chai').expect;
 const isString = require('../src/isString');
+const chai = require('chai');
+const should = chai.should;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isString test', function() {
   // ''
   it(`isString('') === true`, function() {
-    expect(isString('')).to.be.equal(true);
+    isString('').should.equal(true);
   });
 
   // '   '
   it(`isString('   ') === true`, function() {
-    expect(isString('   ')).to.be.equal(true);
+    isString('   ').should.equal(true);
   });
 
   // '3'
   it(`isString('3') === true`, function() {
-    expect(isString('3')).to.be.equal(true);
+    isString('3').should.equal(true);
   });
 
   // 3
   it(`isString(3) === false`, function() {
-    expect(isString(3)).to.be.equal(false);
+    isString(3).should.equal(false);
   });
 
   // null
   it(`isString(null) === false`, function() {
-    expect(isString(null)).to.be.equal(false);
+    isString(null).should.equal(false);
   });
 
   // undefined
   it(`isString(undefined) === false`, function() {
-    expect(isString(undefined)).to.be.equal(false);
+    isString(undefined).should.equal(false);
   });
 
   // true
   it(`isString(true) === false`, function() {
-    expect(isString(true)).to.be.equal(false);
+    isString(true).should.equal(false);
   });
 
   // String('3')
   it(`isString(String('3')) === true`, function() {
-    expect(isString(String('3'))).to.be.equal(true);
+    isString(String('3')).should.equal(true);
   });
 
   // new String('3')
   it(`isString(new String('3')) === true`, function() {
-    expect(isString(new String('3'))).to.be.equal(true);
+    isString(new String('3')).should.equal(true);
   });
 
   // {}
   it(`isString({}) === false`, function() {
-    expect(isString({})).to.be.equal(false);
+    isString({}).should.equal(false);
   });
 
   // Object('3')
   it(`isString(Object('3')) === true`, function() {
-    expect(isString(Object('3'))).to.be.equal(true);
+    isString(Object('3')).should.equal(true);
   });
 
   // Object(3)
   it(`isString(Object(3)) === false`, function() {
-    expect(isString(Object(3))).to.be.equal(false);
+    isString(Object(3)).should.equal(false);
   });
 });
