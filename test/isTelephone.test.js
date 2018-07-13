@@ -1,7 +1,7 @@
 
 const isTelephone = require('../src/isTelephone');
 const chai = require('chai');
-const {should} = chai;
+const should = chai.should;
 
 chai.use(require('chai-things'));
 should();

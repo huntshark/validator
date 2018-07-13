@@ -1,7 +1,7 @@
 
 const isString = require('../src/isString');
 const chai = require('chai');
-const {should} = chai;
+const should = chai.should;
 
 chai.use(require('chai-things'));
 should();
