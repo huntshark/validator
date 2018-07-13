@@ -32,6 +32,11 @@ Using npm:
   jxmValidator.isNegativeNumber(-2); // => true
   jxmValidator.isNegativeNumber(-2.3); // => true
   jxmValidator.isNegativeNumber(2.3); // => false
+
+  // Check postive integer
+  jxmValidator.isPositiveInteger(2); // => true
+  jxmValidator.isPositiveInteger(2.3); // => false
+  jxmValidator.isPositiveInteger(-2); // => false
 ```
 
 ## Documentation
