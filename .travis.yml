@@ -7,7 +7,11 @@ node_js:
   - 5
 
 script:
+  - npm run jxmTest
+
+after_script:
   - npm run jxmCoverage
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 notifications:
   email:
