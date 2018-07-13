@@ -7,7 +7,7 @@ node_js:
   - 5
 
 script:
-  - npm jxmCoverage
+  - npm run jxmCoverage
 after_script:
   - cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
 
