@@ -1,5 +1,5 @@
 
-单元测试
+Unit Test
 ===========================
 
-基于 `mocha`, `chai` 编写的单元测试
+base on `mocha`, `chai`, `expect`

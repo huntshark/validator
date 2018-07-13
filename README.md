@@ -24,6 +24,8 @@ Using npm:
 
 ## Get Started
 
+In Node.js:
+
 ```javascript
   // reference
   const jxmValidator = require('jxm-validator');
@@ -41,19 +43,7 @@ Using npm:
 
 ## Documentation
 
-API Docs, please see [here](https://github.com/sTdobTs/validator/blob/master/docs/APIs.md).
-
-## Features
-
-v0.0.6
-
-* Added support to check `account/password`
-* Added support to check `date`
-* Added support to check `language`
-* Added support to check `letter & number`
-* Added support to check `url`
-* Added support to check `ip`
-* Added support to check `IDCard`
+API Docs, please see [here](https://github.com/sTdobTs/validator/blob/master/docs/en-US/APIs.md).
 
 ## Community
 
@@ -61,7 +51,7 @@ If you have any question, please open an issue [here](https://github.com/sTdobTs
 
 ## Changelog
 
-
+If you search all changes, please open [here](https://github.com/sTdobTs/validator/wiki/Changelog)
 
 ## License
 
