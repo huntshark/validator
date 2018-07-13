@@ -1,86 +1,90 @@
 
-const expect = require('chai').expect;
 const isNumeric = require('../src/isNumeric');
+const chai = require('chai');
+const {should} = chai;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isNumeric test', function() {
   // 3
   it(`isNumeric(3) === true`, function() {
-    expect(isNumeric(3)).to.be.equal(true);
+    isNumeric(3).should.equal(true);
   });
 
   // '3'
   it(`isNumeric('3') === true`, function() {
-    expect(isNumeric('3')).to.be.equal(true);
+    isNumeric('3').should.equal(true);
   });
 
   // '3'
   it(`isNumeric('3', {isStrict: true}) === false`, function() {
-    expect(isNumeric('3', {isStrict: true})).to.be.equal(false);
+    isNumeric('3', {isStrict: true}).should.equal(false);
   });
 
   // '3a'
   it(`isNumeric('3a') === false`, function() {
-    expect(isNumeric('3a')).to.be.equal(false);
+    isNumeric('3a').should.equal(false);
   });
 
   // NaN
   it(`isNumeric(NaN) === false`, function() {
-    expect(isNumeric(NaN)).to.be.equal(false);
+    isNumeric(NaN).should.equal(false);
   });
 
   // Infinity
   it(`isNumeric(Infinity) === false`, function() {
-    expect(isNumeric(Number.POSITIVE_INFINITY)).to.be.equal(false);
+    isNumeric(Number.POSITIVE_INFINITY).should.equal(false);
   });
 
   // -Infinity
   it(`isNumeric(-Infinity) === false`, function() {
-    expect(isNumeric(Number.NEGATIVE_INFINITY)).to.be.equal(false);
+    isNumeric(Number.NEGATIVE_INFINITY).should.equal(false);
   });
 
   // ''
   it(`isNumeric('') === false`, function() {
-    expect(isNumeric('')).to.be.equal(false);
+    isNumeric('').should.equal(false);
   });
 
   // null
   it(`isNumeric(null) === false`, function() {
-    expect(isNumeric(null)).to.be.equal(false);
+    isNumeric(null).should.equal(false);
   });
 
   // undefined
   it(`isNumeric(undefined) === false`, function() {
-    expect(isNumeric(undefined)).to.be.equal(false);
+    isNumeric(undefined).should.equal(false);
   });
 
   // Number(3)
   it(`isNumeric(Number(3)) === true`, function() {
-    expect(isNumeric(Number(3))).to.be.equal(true);
+    isNumeric(Number(3)).should.to.be.equal(true);
   });
 
   // new Number(3)
   it(`isNumeric(new Number(3)) === true`, function() {
-    expect(isNumeric(new Number(3))).to.be.equal(true);
+    isNumeric(new Number(3)).should.equal(true);
   });
 
   // {}
   it(`isNumeric({}) === false`, function() {
-    expect(isNumeric({})).to.be.equal(false);
+    isNumeric({}).should.equal(false);
   });
 
   // Object(3)
   it(`isNumeric(Object(3)) === true`, function() {
-    expect(isNumeric(Object(3))).to.be.equal(true);
+    isNumeric(Object(3)).should.equal(true);
   });
 
   // Object('3')
   it(`isNumeric(Object('3')) === true`, function() {
-    expect(isNumeric(Object('3'))).to.be.equal(true);
+    isNumeric(Object('3')).should.equal(true);
   });
 
   // Object('3')
   it(`isNumeric(Object('3'), {isStrict: true}) === false`, function() {
-    expect(isNumeric(Object('3'), {isStrict: true})).to.be.equal(false);
+    isNumeric(Object('3'), {isStrict: true}).should.equal(false);
   });
 });

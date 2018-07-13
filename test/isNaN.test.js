@@ -1,46 +1,50 @@
 
-const expect = require('chai').expect;
 const _isNaN = require('../src/isNaN');
+const chai = require('chai');
+const {should} = chai;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isNaN test', function() {
   // NaN
   it(`isNaN(NaN) === true`, function() {
-    expect(_isNaN(NaN)).to.be.equal(true);
+    _isNaN(NaN).should.equal(true);
   });
 
   // null
   it(`isNaN(null) === false`, function() {
-    expect(_isNaN(null)).to.be.equal(false);
+    _isNaN(null).should.equal(false);
   });
 
   // undefined
   it(`isNaN(undefined) === false`, function() {
-    expect(_isNaN(undefined)).to.be.equal(false);
+    _isNaN(undefined).should.equal(false);
   });
 
   // ''
   it(`isNaN('') === false`, function() {
-    expect(_isNaN('')).to.be.equal(false);
+    _isNaN('').should.equal(false);
   });
 
   // 3
   it(`isNaN(3) === false`, function() {
-    expect(_isNaN('3')).to.be.equal(false);
+    _isNaN('3').should.equal(false);
   });
 
   // {}
   it(`isNaN({}) === false`, function() {
-    expect(_isNaN({})).to.be.equal(false);
+    _isNaN({}).should.equal(false);
   });
 
   // Number('foo')
   it(`isNaN(Number('foo')) === true`, function() {
-    expect(_isNaN(Number('foo'))).to.be.equal(true);
+    _isNaN(Number('foo')).should.equal(true);
   });
 
   // Number('3')
   it(`isNaN(Number('3')) === false`, function() {
-    expect(_isNaN(Number('3'))).to.be.equal(false);
+    _isNaN(Number('3')).should.equal(false);
   });
 });

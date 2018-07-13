@@ -1,41 +1,45 @@
 
-const expect = require('chai').expect;
 const isUnPositiveNumber = require('../src/isUnPositiveNumber');
+const chai = require('chai');
+const {should} = chai;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isUnPositiveNumber test', function() {
   // -3
   it(`isUnPositiveNumber(-3) === true`, function() {
-    expect(isUnPositiveNumber(-3)).to.be.equal(true);
+    isUnPositiveNumber(-3).should.equal(true);
   });
 
   // '-3'
   it(`isUnPositiveNumber('-3') === true`, function() {
-    expect(isUnPositiveNumber('-3')).to.be.equal(true);
+    isUnPositiveNumber('-3').should.equal(true);
   });
 
   // '-3'
   it(`isUnPositiveNumber('-3', {isStrict: true}) === false`, function() {
-    expect(isUnPositiveNumber('-3', {isStrict: true})).to.be.equal(false);
+    isUnPositiveNumber('-3', {isStrict: true}).should.equal(false);
   });
 
   // 0
   it(`isUnPositiveNumber(0) === true`, function() {
-    expect(isUnPositiveNumber(0)).to.be.equal(true);
+    isUnPositiveNumber(0).should.equal(true);
   });
 
   // '0'
   it(`isUnPositiveNumber('0') === true`, function() {
-    expect(isUnPositiveNumber('0')).to.be.equal(true);
+    isUnPositiveNumber('0').should.equal(true);
   });
 
   // 3
   it(`isUnPositiveNumber(3) === false`, function() {
-    expect(isUnPositiveNumber(3)).to.be.equal(false);
+    isUnPositiveNumber(3).should.equal(false);
   });
 
   // '3'
   it(`isUnPositiveNumber('3') === false`, function() {
-    expect(isUnPositiveNumber('3')).to.be.equal(false);
+    isUnPositiveNumber('3').should.equal(false);
   });
 });

@@ -1,31 +1,35 @@
 
-const expect = require('chai').expect;
 const isFunction = require('../src/isFunction');
+const chai = require('chai');
+const {should} = chai;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isFunction test', function() {
   // []
   it(`isFunction([]) === false`, function() {
-    expect(isFunction([])).to.be.equal(false);
+    isFunction([]).should.equal(false);
   });
 
   // {}
   it(`isFunction({}) === false`, function() {
-    expect(isFunction({})).to.be.equal(false);
+    isFunction({}).should.equal(false);
   });
 
   // function
   it(`isFunction(parseInt) === true`, function() {
-    expect(isFunction(parseInt)).to.be.equal(true);
+    isFunction(parseInt).should.equal(true);
   });
 
   // new Date
   it(`isFunction(new Date()) === false`, function() {
-    expect(isFunction(new Date())).to.be.equal(false);
+    isFunction(new Date()).should.equal(false);
   });
 
   // null
   it(`isFunction(null) === false`, function() {
-    expect(isFunction(null)).to.be.equal(false);
+    isFunction(null).should.equal(false);
   });
 });

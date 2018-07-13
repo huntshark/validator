@@ -1,103 +1,107 @@
 
-const expect = require('chai').expect;
 const isUnZero = require('../src/isUnZero');
+const chai = require('chai');
+const {should} = chai;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isZero test', function() {
   // 3
   it(`isUnZero(3) === true`, function() {
-    expect(isUnZero(3)).to.be.equal(true);
+    isUnZero(3).should.equal(true);
   });
 
   // '3'
   it(`isUnZero('3') === true`, function() {
-    expect(isUnZero('3')).to.be.equal(true);
+    isUnZero('3').should.equal(true);
   });
 
   // '3'
   it(`isUnZero('3', {isStrict: true}) === false`, function() {
-    expect(isUnZero('3', {isStrict: true})).to.be.equal(false);
+    isUnZero('3', {isStrict: true}).should.equal(false);
   });
 
   it(`isUnZero(0) === false`, function() {
-    expect(isUnZero(0)).to.be.equal(false);
+    isUnZero(0).should.equal(false);
   });
 
   it(`isUnZero('0') === false`, function() {
-    expect(isUnZero('0')).to.be.equal(false);
+    isUnZero('0').should.equal(false);
   });
 
   it(`isUnZero('0', {isStrict: true}) === false`, function() {
-    expect(isUnZero('0', {isStrict: true})).to.be.equal(false);
+    isUnZero('0', {isStrict: true}).should.equal(false);
   });
 
   // NaN
   it(`isUnZero(NaN) === false`, function() {
-    expect(isUnZero(NaN)).to.be.equal(false);
+    isUnZero(NaN).should.equal(false);
   });
 
   // Infinity
   it(`isUnZero(Infinity) === false`, function() {
-    expect(isUnZero(Number.POSITIVE_INFINITY)).to.be.equal(false);
+    isUnZero(Number.POSITIVE_INFINITY).should.equal(false);
   });
 
   // -Infinity
   it(`isUnZero(-Infinity) === false`, function() {
-    expect(isUnZero(Number.NEGATIVE_INFINITY)).to.be.equal(false);
+    isUnZero(Number.NEGATIVE_INFINITY).should.equal(false);
   });
 
   // ''
   it(`isUnZero('') === false`, function() {
-    expect(isUnZero('')).to.be.equal(false);
+    isUnZero('').should.equal(false);
   });
 
   // null
   it(`isUnZero(null) === false`, function() {
-    expect(isUnZero(null)).to.be.equal(false);
+    isUnZero(null).should.equal(false);
   });
 
   // undefined
   it(`isUnZero(undefined) === false`, function() {
-    expect(isUnZero(undefined)).to.be.equal(false);
+    isUnZero(undefined).should.equal(false);
   });
 
   // Number(0)
   it(`isUnZero(Number(0)) === false`, function() {
-    expect(isUnZero(Number(0))).to.be.equal(false);
+    isUnZero(Number(0)).should.equal(false);
   });
 
   // Number(3)
   it(`isUnZero(Number(3)) === true`, function() {
-    expect(isUnZero(Number(3))).to.be.equal(true);
+    isUnZero(Number(3)).should.equal(true);
   });
 
   // new Number(0)
   it(`isUnZero(new Number(0)) === false`, function() {
-    expect(isUnZero(new Number(0))).to.be.equal(false);
+    isUnZero(new Number(0)).should.equal(false);
   });
 
   // new Number('0')
   it(`isUnZero(new Number(0)) === false`, function() {
-    expect(isUnZero(new Number('0'))).to.be.equal(false);
+    isUnZero(new Number('0')).should.equal(false);
   });
 
   // new Number(3)
   it(`isUnZero(new Number(3)) === true`, function() {
-    expect(isUnZero(new Number(3))).to.be.equal(true);
+    isUnZero(new Number(3)).should.equal(true);
   });
 
   // Object(3)
   it(`isUnZero(Object(3)) === true`, function() {
-    expect(isUnZero(Object(3))).to.be.equal(true);
+    isUnZero(Object(3)).should.equal(true);
   });
 
   // Object('3')
   it(`isUnZero(Object('3')) === true`, function() {
-    expect(isUnZero(Object('3'))).to.be.equal(true);
+    isUnZero(Object('3')).should.equal(true);
   });
 
   // Object('3')
   it(`isUnZero(Object('3'), {isStrict: true}) === false`, function() {
-    expect(isUnZero(Object('3'), {isStrict: true})).to.be.equal(false);
+    isUnZero(Object('3'), {isStrict: true}).should.equal(false);
   });
 });

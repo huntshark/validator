@@ -1,46 +1,50 @@
 
-const expect = require('chai').expect;
 const isArray = require('../src/isArray');
+const chai = require('chai');
+const {should} = chai;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isArray test', function() {
   // []
   it(`isArray([]) === true`, function() {
-    expect(isArray([])).to.be.equal(true);
+    isArray([]).should.equal(true);
   });
 
   // {}
   it(`isArray({}) === false`, function() {
-    expect(isArray({})).to.be.equal(false);
+    isArray({}).should.equal(false);
   });
 
   // function
   it(`isArray(parseInt) === false`, function() {
-    expect(isArray(parseInt)).to.be.equal(false);
+    isArray(parseInt).should.equal(false);
   });
 
   // new Date
   it(`isArray(new Date()) === false`, function() {
-    expect(isArray(new Date())).to.be.equal(false);
+    isArray(new Date()).should.equal(false);
   });
 
   // null
   it(`isArray(null) === false`, function() {
-    expect(isArray(null)).to.be.equal(false);
+    isArray(null).should.equal(false);
   });
 
   // Object({})
   it(`isArray(Object({})) === false`, function() {
-    expect(isArray(Object({}))).to.be.equal(false);
+    isArray(Object({})).should.equal(false);
   });
 
   // Object([])
   it(`isArray(Object([])) === true`, function() {
-    expect(isArray(Object([]))).to.be.equal(true);
+    isArray(Object([])).should.equal(true);
   });
 
   // new Object([])
   it(`isArray(new Object([])) === true`, function() {
-    expect(isArray(new Object([]))).to.be.equal(true);
+    isArray(new Object([])).should.equal(true);
   });
 });

@@ -1,41 +1,45 @@
 
-const expect = require('chai').expect;
 const isInfinity = require('../src/isInfinity');
+const chai = require('chai');
+const {should} = chai;
+
+chai.use(require('chai-things'));
+should();
 
 // Test
 describe('isInfinity test', function() {
   // Infinity
   it(`isInfinity(Infinity) === true`, function() {
-    expect(isInfinity(Number.POSITIVE_INFINITY)).to.be.equal(true);
+    isInfinity(Number.POSITIVE_INFINITY).should.equal(true);
   });
 
   // Infinity
   it(`isInfinity(-Infinity) === true`, function() {
-    expect(isInfinity(Number.NEGATIVE_INFINITY)).to.be.equal(true);
+    isInfinity(Number.NEGATIVE_INFINITY).should.equal(true);
   });
 
   // NaN
   it(`isInfinity(NaN) === false`, function() {
-    expect(isInfinity(NaN)).to.be.equal(false);
+    isInfinity(NaN).should.equal(false);
   });
 
   // null
   it(`isInfinity(null) === false`, function() {
-    expect(isInfinity(null)).to.be.equal(false);
+    isInfinity(null).should.equal(false);
   });
 
   // undefined
   it(`isInfinity(undefined) === false`, function() {
-    expect(isInfinity(undefined)).to.be.equal(false);
+    isInfinity(undefined).should.equal(false);
   });
 
   // 3
   it(`isInfinity(3) === false`, function() {
-    expect(isInfinity(3)).to.be.equal(false);
+    isInfinity(3).should.equal(false);
   });
 
   // ''
   it(`isInfinity('') === false`, function() {
-    expect(isInfinity('')).to.be.equal(false);
+    isInfinity('').should.equal(false);
   });
 });
