@@ -10,13 +10,13 @@ This is a modern JavaScript verification toolkit library, running on Node.js and
 
 ## Installation
 
-Using in browser
+In a browser:
 
 ```html
   <script src="validator.min.js"></script>
 ```
 
-Using npm
+Using npm:
 
 ```shell
   npm i --save jxm-validator
@@ -36,23 +36,23 @@ Using npm
 
 ## Documentation
 
-API Docs, please see [here](https://github.com/sTdobTs/validator/blob/master/docs/APIs.md)
+API Docs, please see [here](https://github.com/sTdobTs/validator/blob/master/docs/APIs.md).
 
-## Feature
+## Features
 
 v0.0.6
 
-* Added check `account/password` 校验
-* Added `date` 校验
-* Added `language` 校验
-* Added `letter & number` 校验
-* Added `url` 校验
-* Added `ip` 校验
-* Added `IDCard` 校验
+* Added support to check `account/password`
+* Added support to check `date`
+* Added support to check `language`
+* Added support to check `letter & number`
+* Added support to check `url`
+* Added support to check `ip`
+* Added support to check `IDCard`
 
 ## Community
 
-If you have any question, please open an issue [here](https://github.com/sTdobTs/validator/issues)
+If you have any question, please open an issue [here](https://github.com/sTdobTs/validator/issues).
 
 ## Changelog
 
