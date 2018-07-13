@@ -1,6 +1,6 @@
 {
   "name": "jxm-validator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A modern JavaScript verification toolkit library",
   "main": "validator.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "build:uglify": "npm run jxmEslint && npm run jxmTest && npm run jxmUglify",
     "jxmBuild": "webpack --config webpack.config.js",
     "jxmUglify": "webpack --config webpack.config.uglify.js",
+    "test": "mocha ./test/*.test.js",
     "jxmTest": "mocha ./test/*.test.js",
     "jxmEslint": "eslint --config .eslintrc.yaml src --ignore-path .eslintignore"
   },
@@ -16,13 +17,17 @@
     "url": "https://github.com/sTdobTs/validator.git"
   },
   "keywords": [
-    "just",
-    "dot",
-    "jxm",
-    "validate",
     "validator",
-    "javascript",
-    "node"
+    "validation",
+    "validate",
+    "sanitization",
+    "sanitize",
+    "check",
+    "verify",
+    "assert",
+    "justdot",
+    "jxm",
+    "javascript"
   ],
   "author": "justdot<575099237@qq.com>",
   "homepage": "https://github.com/sTdobTs/validator",

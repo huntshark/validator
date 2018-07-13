@@ -5,4 +5,5 @@ node_js:
   - 8
   - 6
 notifications:
-  email: false
+  email:
+    - 575099237@qq.com
