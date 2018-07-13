@@ -4,6 +4,9 @@ node_js:
   - stable
   - 8
   - 6
+  - 5
+script:
+  - npm jxmTest
 notifications:
   email:
     - 575099237@qq.com

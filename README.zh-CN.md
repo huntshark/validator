@@ -51,7 +51,7 @@ API 文档，请看 [这里](https://github.com/sTdobTs/validator/blob/master/do
 
 ## 变更记录
 
-如果您想要查看所有的变更记录, 请看 [here](https://github.com/sTdobTs/validator/wiki/Changelog)
+如果您想要查看所有的变更记录, 请看 [这里](https://github.com/sTdobTs/validator/wiki/Changelog)
 
 ## 许可协议
 
