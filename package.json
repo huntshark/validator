@@ -9,8 +9,7 @@
     "jxmBuild": "webpack --config webpack.config.js",
     "jxmUglify": "webpack --config webpack.config.uglify.js",
     "jxmTest": "mocha ./test/*.test.js",
-    "jxmCoverage": "istanbul cover _mocha -- -R spec --timeout 5000 --recursive",
-    "jxmCoverage:check": "istanbul check-coverage",
+    "jxmCoverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
     "jxmEslint": "eslint --config .eslintrc.yaml src --ignore-path .eslintignore"
   },
   "repository": {
@@ -38,6 +37,7 @@
     "babel-eslint": "^8.2.1",
     "chai": "^4.1.2",
     "chai-things": "^0.2.0",
+    "coveralls": "^3.0.2",
     "eslint": "^4.16.0",
     "eslint-config-airbnb-es5": "^1.2.0",
     "eslint-plugin-html": "^4.0.2",
