@@ -2,16 +2,15 @@
 API 文档
 ===========================
 
-假设，您已经阅读，并且知道如何使用，可以直接跳过该步骤。若是还没有看过的同学，请看这里：
+假设，您已经阅读，并且知道如何了使用，可以直接跳过该步骤。若是还没有看过的同学，请看这里：
 
 ```javascript
-  // 引入 `jxm-validator`
   const jxmValidator = require('jxm-validator');
 
   jxmValidator.isNull(null);
 ```
 
-接下来，一起来看API吧。若是想了解更信息的信息，请点击相应的API
+接下来，一起来看 API 吧。若是, 您想了解更多的 API 信息，请点击相应的 API 即可
 
 * Null/Undefined
   - [isUndefined(val)](./APIs/isUndefined.md)
@@ -69,3 +68,5 @@ API 文档
 
 * Other
   - [isEmail(val)](./APIs/isEmail.md)
+  - [isIpv4(val)](./APIs/isIpv4.md)
+

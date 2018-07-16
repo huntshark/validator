@@ -46,6 +46,8 @@ var _isPhone = require('./isPhone');
 
 var _isEmail = require('./isEmail');
 
+var _isIpv4 = require('./isIpv4');
+
 module.exports = {
   isUndefined: _isUndefined,
   isNull: _isNull,
@@ -92,5 +94,7 @@ module.exports = {
   isTelephone: _isTelephone,
   isPhone: _isPhone,
 
-  isEmail: _isEmail
+  isEmail: _isEmail,
+
+  isIpv4: _isIpv4
 };
