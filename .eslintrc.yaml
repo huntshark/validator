@@ -27,9 +27,9 @@ parserOptions:
 # 2: error 开启规则, 使用错误级别的错误, 会导致程序退出
 rules:
     # 强制一行的最大长度
-    max-len:
-      - 2
-      - 120
+    # max-len:
+    #   - 2
+    #   - 120
 
     # 禁止自身比较
     no-self-compare:

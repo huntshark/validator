@@ -8,7 +8,7 @@ var REGEX_ENUM = require('./internal/enum/regexEnum');
  *
  * 该接口存在两种模式, 即严格模式、非严格模式
  *
- * 默认采用`非严格模式`
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是正数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为正数字符串, 则返回 true, 否则返回 false

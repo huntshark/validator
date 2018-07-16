@@ -82,9 +82,9 @@ var DATA_TYPE_ENUM = __webpack_require__(4);
 var assertDataType = __webpack_require__(5);
 
 /**
- * 校验 `val` 是否为的 object
+ * 校验参数 `val` 是否为的 object
  *
- * 若是参数 `val` 的类型为 `[object Object]` 时，返回 true,
+ * 若参数 `val` 的类型为 `[object Object]` 时，返回 true,
  *
  * 否则, 返回 false
  *
@@ -124,7 +124,10 @@ var REGEX_ENUM = {
   },
   MOBILE_REX: { // 手机号码|移动电话
     'zh-CN': /^(\+?0?86-?)?1\d{10}$/
-  }
+  },
+
+  // ipv4
+  IPV4_REX: /\b((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\.((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\.((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\.((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\b/
 };
 
 module.exports = REGEX_ENUM;
@@ -139,7 +142,7 @@ var DATA_TYPE_ENUM = __webpack_require__(4);
 var assertDataType = __webpack_require__(5);
 
 /**
- * 校验 `val` 是否为 number
+ * 校验参数 `val` 是否为 number
  *
  * 若是参数 `val` 的类型为 `number` 或者 `[object Number]`时，返回 true,
  *
@@ -168,7 +171,7 @@ var DATA_TYPE_ENUM = __webpack_require__(4);
 var assertDataType = __webpack_require__(5);
 
 /**
- * 校验 `val` 是否为 string
+ * 校验参数 `val` 是否为 string
  *
  * 若参数 `val` 类型为 `string` 或者 `[object String]` 时，返回 true,
  *
@@ -246,9 +249,9 @@ var DATA_TYPE_REPLACE_REX = /^\[object\u0020|\]$/ig;
 var _toString = Object.prototype.toString;
 
 /**
- * 断言`val`的数据类型是否为`type`对应的数据类型
+ * 断言 `val` 的数据类型是否为 `type` 对应的数据类型
  *
- * 若是参数`val`的数据类型与`type`相同，则返回 true,
+ * 若是参数 `val` 的数据类型与 `type` 相同，则返回 true,
  *
  * 若是不相同，则返回 false
  *
@@ -288,20 +291,25 @@ var _isObject = __webpack_require__(0);
 var _isUnEmptyString = __webpack_require__(9);
 
 /**
- * 校验 `val` 是否为实数(有理数和无理数)
+ * 校验参数 `val` 是否为实数(有理数和无理数)
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且不是 NaN, 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且可以经过 ToNumber 转换为非 NaN 的数字, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -336,7 +344,7 @@ module.exports = _isRealNumber;
 
 
 /**
- * 校验 `val` 是否为 NaN
+ * 校验参数 `val` 是否为 NaN
  *
  * 若参数 `val` 是 NaN，则返回 true，否则返回 false
  *
@@ -377,7 +385,7 @@ var POSITIVE_INFINITY = 1 / 0;
 var NEGATIVE_INFINITY = -1 / 0;
 
 /**
- * 校验 `val` 是否为 Infinity, -Infinity
+ * 校验参数 `val` 是否为 Infinity, -Infinity
  *
  * 若参数 `val` 是 Infinity, -Infinity, 则返回 true, 否则返回 false
  *
@@ -402,9 +410,11 @@ var _isString = __webpack_require__(3);
 var _isObject = __webpack_require__(0);
 
 /**
- * 校验 `val` 是否为 非空字符串
+ * 校验参数 `val` 是否为 非空字符串
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `严格模式`
  *
  * 若参数 `val` 不是 string, 则直接返回 false
  * 若参数 `val` 是 string, 并且不为空，则返回 true, 否则, 返回 false
@@ -412,10 +422,11 @@ var _isObject = __webpack_require__(0);
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true,
  * 则会对参数 `val` 进行两端去除空白（空字符），之后在校验其是否为非空字符串
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '   '
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -446,20 +457,25 @@ var _isRealNumber = __webpack_require__(6);
 var _isInfinity = __webpack_require__(8);
 
 /**
- * 校验 `val` 是否为数字
+ * 校验参数 `val` 是否为数字
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且不是 NaN, Infinity, -Infinity, 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且可以经过 ToNumber 转换为非 NaN, Infinity, -Infinity 的数字, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -484,9 +500,9 @@ var DATA_TYPE_ENUM = __webpack_require__(4);
 var assertDataType = __webpack_require__(5);
 
 /**
- * 校验 `val` 是否为 array
+ * 校验参数 `val` 是否为 array
  *
- * 若是参数 `val` 的类型为 `[object Array]` 时，返回 true,
+ * 若参数 `val` 的类型为 `[object Array]` 时，返回 true,
  *
  * 否则, 返回 false
  *
@@ -511,7 +527,7 @@ var _isObject = __webpack_require__(0);
 var _isFunction = __webpack_require__(13);
 
 /**
- * 校验 `val` 是否为纯粹的 object
+ * 校验参数 `val` 是否为纯粹的 object
  *
  * 若参数 `val` 是纯粹的 object, 则返回 true, 否则返回 false
  *
@@ -548,9 +564,9 @@ var DATA_TYPE_ENUM = __webpack_require__(4);
 var assertDataType = __webpack_require__(5);
 
 /**
- * 校验 `val` 是否为 function
+ * 校验参数 `val` 是否为 function
  *
- * 若是参数 `val` 的类型为 `[object Function]` 时，返回 true,
+ * 若参数 `val` 的类型为 `[object Function]` 时，返回 true,
  *
  * 否则, 返回 false
  *
@@ -576,7 +592,7 @@ var LOCALE_ENUM = __webpack_require__(15);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为手机号码
+ * 校验参数 `val` 是否为手机号码
  *
  * 若参数 `val` 符合参数 `locale`(默认值:  LOCALE_ENUM.ZHCN) 指定地区的手机号码格式, 则返回 true, 否则返回 false
  *
@@ -633,7 +649,7 @@ var LOCALE_ENUM = __webpack_require__(15);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为座机号码
+ * 校验参数 `val` 是否为座机号码
  *
  * 若参数 `val` 符合参数 `locale`(默认值:  LOCALE_ENUM.ZHCN) 指定地区的座机号码格式, 则返回 true, 否则返回 false
  *
@@ -719,6 +735,8 @@ var _isPhone = __webpack_require__(36);
 
 var _isEmail = __webpack_require__(37);
 
+var _isIpv4 = __webpack_require__(38);
+
 module.exports = {
   isUndefined: _isUndefined,
   isNull: _isNull,
@@ -765,7 +783,9 @@ module.exports = {
   isTelephone: _isTelephone,
   isPhone: _isPhone,
 
-  isEmail: _isEmail
+  isEmail: _isEmail,
+
+  isIpv4: _isIpv4
 };
 
 
@@ -775,7 +795,7 @@ module.exports = {
 
 
 /**
- * 校验 `val` 是否为 undefined,
+ * 校验参数 `val` 是否为 undefined,
  *
  * 若是参数 `val` 的值恒等于 undefined, 则返回 true,
  *
@@ -799,7 +819,7 @@ module.exports = _isUndefined;
 
 
 /**
- * 校验 `val` 是否为 null
+ * 校验参数 `val` 是否为 null
  *
  * 若是参数 `val` 的值恒等于 null, 则返回 true,
  *
@@ -823,11 +843,10 @@ module.exports = _isNull;
 
 
 /**
- * 校验 `val` 是否为 null 或 undefined
+ * 校验参数 `val` 是否为 null 或 undefined
  *
- * 若是
- *  参数 `val` 的值恒等于 null, 则返回 true,
- *  参数 `val` 的值恒等于 undefined, 则返回 true,
+ * 若参数 `val` 的值恒等于 null, 则返回 true,
+ * 若参数 `val` 的值恒等于 undefined, 则返回 true,
  *
  * 否则, 返回 false
  *
@@ -837,7 +856,6 @@ module.exports = _isNull;
  * @since   0.0.1
  */
 function _isNil(val) {
-  // return val == null;
   return val === void 0 || val === null;
 }
 
@@ -853,9 +871,9 @@ var DATA_TYPE_ENUM = __webpack_require__(4);
 var assertDataType = __webpack_require__(5);
 
 /**
- * 校验 `val` 是否为 boolean
+ * 校验参数 `val` 是否为 boolean
  *
- * 若是参数 `val` 的类型为 `boolean` 或者 `[object Boolean]` 时, 返回 true,
+ * 若参数 `val` 的类型为 `boolean` 或者 `[object Boolean]` 时, 则返回 true,
  *
  * 否则, 返回 false
  *
@@ -880,20 +898,25 @@ var _isObject = __webpack_require__(0);
 var _isRealNumber = __webpack_require__(6);
 
 /**
- * 校验 `val` 是否为零
+ * 校验参数 `val` 是否为零
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且等于零, 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且经过 ToNumber 转换后的数据等于零, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '0'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -923,20 +946,25 @@ module.exports = _isZero;
 var _isNumeric = __webpack_require__(10);
 
 /**
- * 校验 `val` 是否为 number, 并且不等于零
+ * 校验参数 `val` 是否为 number, 并且不等于零
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且不是 NaN, Infinity, -Infinity, 同时也不等于零, 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且经过 ToNumber 转换为非 NaN, Infinity, -Infinity 的数字, 同时也不等于零, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -962,20 +990,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为 正数
+ * 校验参数 `val` 是否为 正数
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是正数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为正数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1007,20 +1040,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为负数
+ * 校验参数 `val` 是否为负数
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是负数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为负数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '-3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1052,20 +1090,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为非正数, 即负数和零
+ * 校验参数 `val` 是否为非正数, 即负数和零
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是非正数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为非正数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '-3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1097,20 +1140,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为非负数, 即正数和零
+ * 校验参数 `val` 是否为非负数, 即正数和零
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是非负数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为非负数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1142,20 +1190,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为 整数
+ * 校验参数 `val` 是否为 整数
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是整数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为整数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1187,20 +1240,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为 正整数
+ * 校验参数 `val` 是否为 正整数
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是正整数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为正整数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1232,20 +1290,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为 负整数
+ * 校验参数 `val` 是否为 负整数
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是负整数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为负整数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '-3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1277,20 +1340,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为 非正整数, 即负整数和零
+ * 校验参数 `val` 是否为 非正整数, 即负整数和零
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是非正整数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为非正整数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '-3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1322,20 +1390,25 @@ var _isObject = __webpack_require__(0);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为 非负整数, 即正整数和零
+ * 校验参数 `val` 是否为 非负整数, 即正整数和零
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
  *
  * 若参数 `val` 为 number 类型, 并且是非负整数 则返回 true, 否则返回 false
  * 若参数 `val` 为 string 类型, 并且通过验证为非负整数字符串, 则返回 true, 否则返回 false
  * 若参数 `val` 不属于以上两种类型, 则直接返回 false
  *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '3'
- * 若是严格模式, 则该参数值校验后, 返回 false
- * 若是非严格模式, 则该参数值校验后, 返回 true
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1366,9 +1439,11 @@ var _isString = __webpack_require__(3);
 var _isObject = __webpack_require__(0);
 
 /**
- * 校验 `val` 是否为 空字符串
+ * 校验参数 `val` 是否为 空字符串
  *
- * 该接口存在两种模式, 即严格模式、非严格模式; 默认采用`严格模式`
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `严格模式`
  *
  * 若参数 `val` 不是 string, 则直接返回 false
  * 若参数 `val` 是 string, 并且为空，则返回 true, 否则, 返回 false
@@ -1376,10 +1451,11 @@ var _isObject = __webpack_require__(0);
  * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true,
  * 则会对参数 `val` 进行两端去除空白（空字符），之后在校验其是否为空字符串
  *
- * e.g
+ * e.g.
+ *
  * 待校验参数 '   '
- * 若是严格模式, 则该参数值校验后, 返回 true
- * 若是非严格模式, 则该参数值校验后, 返回 false
+ * > 若是严格模式, 则该参数值校验后, 返回 true
+ * > 若是非严格模式, 则该参数值校验后, 返回 false
  *
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
@@ -1409,7 +1485,7 @@ module.exports = _isEmptyString;
 var _isArray = __webpack_require__(11);
 
 /**
- * 校验 `val` 是否为空数组
+ * 校验参数 `val` 是否为空数组
  *
  * 若参数 `val` 不是 array, 则直接返回 false
  * 若参数 `val` 是 array, 并且为空，则返回 true, 否则, 返回 false
@@ -1439,7 +1515,7 @@ var _isString = __webpack_require__(3);
 var _isPlainObject = __webpack_require__(12);
 
 /**
- * 校验 `val` 是否为 JSON 对象
+ * 校验参数 `val` 是否为 JSON 对象
  *
  * 若参数 `val` 是 JSON 对象, 则返回 true, 否则返回 false
  *
@@ -1474,7 +1550,7 @@ var _isMobile = __webpack_require__(14);
 var _isTelephone = __webpack_require__(16);
 
 /**
- * 校验 `val` 是否为手机号码/座机号码
+ * 校验参数 `val` 是否为手机号码/座机号码
  *
  * 若参数 `val` 符合参数 `locale`(默认值:  LOCALE_ENUM.ZHCN) 指定地区的号码格式, 则返回 true, 否则返回 false
  *
@@ -1506,7 +1582,7 @@ var _isString = __webpack_require__(3);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
- * 校验 `val` 是否为邮箱
+ * 校验参数 `val` 是否为邮箱
  *
  * 若参数 `val` 是邮箱, 则返回 true, 否则返回 false
  *
@@ -1524,6 +1600,35 @@ function _isEmail(val) {
 }
 
 module.exports = _isEmail;
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var _isString = __webpack_require__(3);
+var REGEX_ENUM = __webpack_require__(1);
+
+/**
+ * 校验参数 `val` 是否为 ipv4
+ *
+ * 若参数 `val` 是 ipv4, 则返回 true, 否则返回 false
+ *
+ * @param   {*}       val    待校验的参数
+ * @return  {Boolean} 返回校验结果
+ * @version 0.0.6
+ * @since   0.0.6
+ */
+function _isIpv4(val) {
+  if (!_isString(val)) {
+    return false;
+  }
+
+  return REGEX_ENUM.IPV4_REX.test(val);
+}
+
+module.exports = _isIpv4;
 
 
 /***/ })
