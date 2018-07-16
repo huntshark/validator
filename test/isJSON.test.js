@@ -13,6 +13,11 @@ describe('isJSON test', function() {
     isJSON('{"a": 3}').should.equal(true);
   });
 
+  // {a: 3}
+  it(`isJSON('{a: 3}') === false`, function() {
+    isJSON('{a: 3}').should.equal(false);
+  });
+
   // '[3, 4]'
   it(`isJSON('[3, 4]') === false`, function() {
     isJSON('[3, 4]').should.equal(false);

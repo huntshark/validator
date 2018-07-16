@@ -2,10 +2,13 @@
 validator
 ===========================
 
-[![Build Status](https://travis-ci.org/sTdobTs/validator.svg?branch=master)](https://travis-ci.org/sTdobTs/validator)
 [![NPM version](http://img.shields.io/npm/v/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
+[![Build Status](https://travis-ci.org/sTdobTs/validator.svg?branch=master)](https://travis-ci.org/sTdobTs/validator)
 [![Coverage Status](https://coveralls.io/repos/github/sTdobTs/validator/badge.svg?branch=master)](https://coveralls.io/github/sTdobTs/validator?branch=master)
 [![Downloads](http://img.shields.io/npm/dm/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
+[![License](https://img.shields.io/npm/l/jxm-validator.svg?maxAge=2592000)](https://github.com/sTdobTs/validator/blob/master/LICENSE)
+
+> [中文](https://github.com/sTdobTs/validator/blob/master/README.zh-CN.md) | [English](https://github.com/sTdobTs/validator)
 
 基于 ECMAScript5.1 实现的验证工具包，提供了丰富的校验和工具方法，在 Node.js 和现代浏览器中可以使用。
 
@@ -28,15 +31,15 @@ validator
 在 Node.js 中使用:
 
 ```javascript
-  // reference
+  // 引用
   const jxmValidator = require('jxm-validator');
 
-  // Check negative number
+  // 检验 负数
   jxmValidator.isNegativeNumber(-2); // => true
   jxmValidator.isNegativeNumber(-2.3); // => true
   jxmValidator.isNegativeNumber(2.3); // => false
 
-  // Check postive integer
+  // 校验 正整数
   jxmValidator.isPositiveInteger(2); // => true
   jxmValidator.isPositiveInteger(2.3); // => false
   jxmValidator.isPositiveInteger(-2); // => false

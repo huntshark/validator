@@ -3,7 +3,7 @@ var _isString = require('./isString');
 var REGEX_ENUM = require('./internal/enum/regexEnum');
 
 /**
- * 校验 `val` 是否为邮箱
+ * 校验参数 `val` 是否为邮箱
  *
  * 若参数 `val` 是邮箱, 则返回 true, 否则返回 false
  *

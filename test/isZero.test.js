@@ -13,6 +13,11 @@ describe('isZero test', function() {
     isZero(3).should.equal(false);
   });
 
+  // -3
+  it(`isZero(3) === false`, function() {
+    isZero(3).should.equal(false);
+  });
+
   it(`isZero(0) === true`, function() {
     isZero(0).should.equal(true);
   });
@@ -43,6 +48,11 @@ describe('isZero test', function() {
   // ''
   it(`isZero('') === false`, function() {
     isZero('').should.equal(false);
+  });
+
+  // '   '
+  it(`isZero('   ') === false`, function() {
+    isZero('   ').should.equal(false);
   });
 
   // null

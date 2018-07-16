@@ -3,7 +3,7 @@ var _isString = require('./isString');
 var _isPlainObject = require('./isPlainObject');
 
 /**
- * 校验 `val` 是否为 JSON 对象
+ * 校验参数 `val` 是否为 JSON 对象
  *
  * 若参数 `val` 是 JSON 对象, 则返回 true, 否则返回 false
  *

@@ -2,10 +2,13 @@
 validator
 ===========================
 
-[![Build Status](https://travis-ci.org/sTdobTs/validator.svg?branch=master)](https://travis-ci.org/sTdobTs/validator)
 [![NPM version](http://img.shields.io/npm/v/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
+[![Build Status](https://travis-ci.org/sTdobTs/validator.svg?branch=master)](https://travis-ci.org/sTdobTs/validator)
 [![Coverage Status](https://coveralls.io/repos/github/sTdobTs/validator/badge.svg?branch=master)](https://coveralls.io/github/sTdobTs/validator?branch=master)
 [![Downloads](http://img.shields.io/npm/dm/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
+[![License](https://img.shields.io/npm/l/jxm-validator.svg?maxAge=2592000)](https://github.com/sTdobTs/validator/blob/master/LICENSE)
+
+> [中文](https://github.com/sTdobTs/validator/blob/master/README.zh-CN.md) | [English](https://github.com/sTdobTs/validator)
 
 This is a modern JavaScript verification toolkit library, running on Node.js and in the modern browser, provide feature-rich verification function, making verification simple and fun.
 
@@ -44,7 +47,7 @@ In Node.js:
 
 ## Documentation
 
-API Docs, please see [here](https://github.com/sTdobTs/validator/blob/master/docs/en-US/APIs.md).
+API Docs, please open [here](https://github.com/sTdobTs/validator/blob/master/docs/en-US/APIs.md).
 
 ## Community
 
@@ -52,7 +55,7 @@ If you have any question, please open an issue [here](https://github.com/sTdobTs
 
 ## Changelog
 
-If you search all changes, please open [here](https://github.com/sTdobTs/validator/wiki/Changelog)
+If you see all changes, please open [here](https://github.com/sTdobTs/validator/wiki/Changelog)
 
 ## License
 

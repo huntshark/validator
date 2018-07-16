@@ -37,4 +37,9 @@ describe('isEmail test', function() {
   it(`isEmail('dotx575099329@qingniu.co') === true`, function() {
     isEmail('dotx575099329@qingniu.co').should.equal(true);
   });
+
+  // 333
+  it(`isEmail(333) === false`, function() {
+    isEmail(333).should.equal(false);
+  });
 });

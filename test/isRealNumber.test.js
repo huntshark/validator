@@ -18,6 +18,11 @@ describe('isRealNumber test', function() {
     isRealNumber('3').should.equal(true);
   });
 
+  // 3
+  it(`isRealNumber(3, {isStrict: true}) === true`, function() {
+    isRealNumber(3, {isStrict: true}).should.equal(true);
+  });
+
   // '3'
   it(`isRealNumber('3', {isStrict: true}) === false`, function() {
     isRealNumber('3', {isStrict: true}).should.equal(false);
@@ -46,6 +51,11 @@ describe('isRealNumber test', function() {
   // ''
   it(`isRealNumber('') === false`, function() {
     isRealNumber('').should.equal(false);
+  });
+
+  // '   '
+  it(`isRealNumber('   ') === false`, function() {
+    isRealNumber('   ').should.equal(false);
   });
 
   // null

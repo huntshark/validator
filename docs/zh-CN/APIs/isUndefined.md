@@ -11,7 +11,7 @@
 
 #### 说明：
 
-    仅当参数 val === undefined 时，返回 `true`, 否则返回 `false`
+    当且仅当参数 val === undefined 时，返回 `true`, 否则返回 `false`
 
 #### 示例：
 

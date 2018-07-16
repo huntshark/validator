@@ -2,9 +2,10 @@
 API 文档
 ===========================
 
-假设，您已经阅读，并且已经知道如何使用，可以直接跳过该步骤。如果还没有看过的同学，请看这里，引入`jxm-validator`：
+假设，您已经阅读，并且知道如何使用，可以直接跳过该步骤。若是还没有看过的同学，请看这里：
 
 ```javascript
+  // 引入 `jxm-validator`
   const jxmValidator = require('jxm-validator');
 
   jxmValidator.isNull(null);

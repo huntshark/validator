@@ -2,7 +2,7 @@
 var _isArray = require('./isArray');
 
 /**
- * 校验 `val` 是否为空数组
+ * 校验参数 `val` 是否为空数组
  *
  * 若参数 `val` 不是 array, 则直接返回 false
  * 若参数 `val` 是 array, 并且为空，则返回 true, 否则, 返回 false

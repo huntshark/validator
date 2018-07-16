@@ -28,13 +28,23 @@ describe('isMobile test', function() {
     isMobile('1850550593').should.equal(false);
   });
 
-  // '18505505933'
+  // '1850550 933'
   it(`isMobile('1850550 933') === false`, function() {
     isMobile('1850550 933').should.equal(false);
   });
 
-  // '18505505933'
+  // '1850550-933'
   it(`isMobile('1850550-933') === false`, function() {
     isMobile('1850550-933').should.equal(false);
+  });
+
+  // 18505505933
+  it(`isMobile(18505505933) === false`, function() {
+    isMobile(18505505933).should.equal(false);
+  });
+
+  // '18505505933'
+  it(`isMobile('18505505933', 'en-US') === false`, function() {
+    isMobile('18505505933', 'en-US').should.equal(false);
   });
 });

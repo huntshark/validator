@@ -3,9 +3,9 @@ var DATA_TYPE_ENUM = require('./internal/enum/dataTypeEnum');
 var assertDataType = require('./internal/assertDataType');
 
 /**
- * 校验 `val` 是否为 boolean
+ * 校验参数 `val` 是否为 boolean
  *
- * 若是参数 `val` 的类型为 `boolean` 或者 `[object Boolean]` 时, 返回 true,
+ * 若参数 `val` 的类型为 `boolean` 或者 `[object Boolean]` 时, 则返回 true,
  *
  * 否则, 返回 false
  *
