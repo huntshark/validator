@@ -17,6 +17,7 @@
 
 ```javascript
 jxmValidator.isJSON('{"a": 3}'); // => true
+jxmValidator.isJSON('{a: 3}'); // => false
 jxmValidator.isJSON('[3, 4]'); // => false
 jxmValidator.isJSON('3'); // => false
 

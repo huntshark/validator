@@ -3,7 +3,7 @@ var _isObject = require('./isObject');
 var _isFunction = require('./isFunction');
 
 /**
- * 校验 `val` 是否为纯粹的 object
+ * 校验参数 `val` 是否为纯粹的 object
  *
  * 若参数 `val` 是纯粹的 object, 则返回 true, 否则返回 false
  *

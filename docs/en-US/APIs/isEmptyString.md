@@ -15,7 +15,9 @@
 
 #### 说明：
 
-    该接口存在两种模式, 即严格模式、非严格模式，默认采用严格模式
+    该接口存在两种模式, 即严格模式、非严格模式
+
+    默认采用 `严格模式`
 
     若参数 `val` 不是 string, 则直接返回 false
     若参数 `val` 是 string 并且为空(''), 则返回 true, 否则返回 false
@@ -32,11 +34,19 @@
 #### 示例：
 
 ```javascript
+jxmValidator.isEmptyString(3); // => false
 jxmValidator.isEmptyString('3'); // => false
+
+jxmValidator.isEmptyString(0); // => false
 
 jxmValidator.isEmptyString(''); // => true
 jxmValidator.isEmptyString('', {isStrict: false})); // => true
 
 jxmValidator.isEmptyString('  '); // => true
 jxmValidator.isEmptyString('  ', {isStrict: false}); // => false
+
+jxmValidator.isEmptyString(null); // => false
+jxmValidator.isEmptyString(undefined); // => false
+
+jxmValidator.isEmptyString(NaN); // => false
 ```

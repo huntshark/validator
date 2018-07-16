@@ -11,7 +11,7 @@
 
 #### 说明：
 
-    仅当参数 val 为 `boolean` 时，返回 `true`, 否则返回 `false`
+    当参数 val 为 `boolean` 时，返回 `true`, 否则返回 `false`
 
 #### 示例：
 

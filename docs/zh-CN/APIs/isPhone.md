@@ -9,7 +9,7 @@
 
     val，任意类型
 
-    locale，可选参数，默认值 'ZHCN'
+    locale，可选参数，默认值 'zh-CN'
 
 #### 说明：
 

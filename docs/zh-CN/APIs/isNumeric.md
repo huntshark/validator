@@ -15,11 +15,15 @@
 
 #### 说明：
 
-    该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+    该接口存在两种模式, 即严格模式、非严格模式;
+
+    默认采用 `非严格模式`
 
     若参数 `val` 为 number 类型, 并且不是 NaN, Infinity, -Infinity, 则返回 true, 否则返回 false
     若参数 `val` 为 string 类型, 并且可以经过 ToNumber 转换为非 NaN, Infinity, -Infinity 的数字, 则返回 true, 否则返回 false
     若参数 `val` 不属于以上两种类型, 则直接返回 false
+
+    若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
 
     若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
 
@@ -34,6 +38,7 @@
 ```javascript
 jxmValidator.isNumeric(3); // => true
 jxmValidator.isNumeric('3'); // => true
+jxmValidator.isNumeric(3, {isStrict: true}); // => true
 jxmValidator.isNumeric('3', {isStrict: true}); // => false
 jxmValidator.isNumeric('3a'); // => false
 
@@ -42,6 +47,7 @@ jxmValidator.isNumeric(Number.POSITIVE_INFINITY); // => false
 jxmValidator.isNumeric(Number.NEGATIVE_INFINITY); // => false
 
 jxmValidator.isNumeric(''); // => false
+jxmValidator.isNumeric('   '); // => false
 jxmValidator.isNumeric(null); // => false
 jxmValidator.isNumeric(undefined); // => false
 

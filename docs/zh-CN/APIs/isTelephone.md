@@ -9,7 +9,7 @@
 
     val，任意类型
 
-    locale，可选参数，默认值 'ZHCN'
+    locale，可选参数，默认值 'zh-CN'
 
 #### 说明：
 
@@ -26,5 +26,10 @@
 ```javascript
 jxmValidator.isTelephone('7632614'); // => true
 jxmValidator.isTelephone('0550-7632614'); // => true
+
 jxmValidator.isTelephone('185055059334'); // => false
+
+jxmValidator.isTelephone(7632614); // => false
+
+jxmValidator.isTelephone('7632614', 'en-US'); // => false
 ```

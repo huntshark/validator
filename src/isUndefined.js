@@ -1,6 +1,6 @@
 
 /**
- * 校验 `val` 是否为 undefined,
+ * 校验参数 `val` 是否为 undefined,
  *
  * 若是参数 `val` 的值恒等于 undefined, 则返回 true,
  *

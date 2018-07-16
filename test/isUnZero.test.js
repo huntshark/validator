@@ -7,10 +7,15 @@ chai.use(require('chai-things'));
 should();
 
 // Test
-describe('isZero test', function() {
+describe('isUnZero test', function() {
   // 3
   it(`isUnZero(3) === true`, function() {
     isUnZero(3).should.equal(true);
+  });
+
+  // -3
+  it(`isUnZero(-3) === true`, function() {
+    isUnZero(-3).should.equal(true);
   });
 
   // '3'
@@ -53,6 +58,11 @@ describe('isZero test', function() {
   // ''
   it(`isUnZero('') === false`, function() {
     isUnZero('').should.equal(false);
+  });
+
+  // '   '
+  it(`isUnZero('   ') === false`, function() {
+    isUnZero('   ').should.equal(false);
   });
 
   // null

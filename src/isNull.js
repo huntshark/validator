@@ -1,6 +1,6 @@
 
 /**
- * 校验 `val` 是否为 null
+ * 校验参数 `val` 是否为 null
  *
  * 若是参数 `val` 的值恒等于 null, 则返回 true,
  *

@@ -15,11 +15,15 @@
 
 #### 说明：
 
-    该接口存在两种模式, 即严格模式、非严格模式; 默认采用`非严格模式`
+    该接口存在两种模式, 即严格模式、非严格模式;
+
+    默认采用 `非严格模式`
 
     若参数 `val` 为 number 类型, 并且是非负数 则返回 true, 否则返回 false
     若参数 `val` 为 string 类型, 并且通过验证为非负数字符串, 则返回 true, 否则返回 false
     若参数 `val` 不属于以上两种类型, 则直接返回 false
+
+    若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
 
     若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
 
@@ -34,11 +38,25 @@ s
 ```javascript
 jxmValidator.isUnNegativeNumber(3); // => true
 jxmValidator.isUnNegativeNumber('3'); // => true
+jxmValidator.isUnNegativeNumber(3, {isStrict: true}); // => true
 jxmValidator.isUnNegativeNumber('3', {isStrict: true}); // => false
 
 jxmValidator.isUnNegativeNumber(0); // => true
 jxmValidator.isUnNegativeNumber('0'); // => true
+jxmValidator.isUnNegativeNumber(0, {isStrict: true}); // => true
+jxmValidator.isUnNegativeNumber('0', {isStrict: true}); // => false
 
 jxmValidator.isUnNegativeNumber(-3); // => false
 jxmValidator.isUnNegativeNumber('-3'); // => false
+jxmValidator.isUnNegativeNumber(-3, {isStrict: true}); // => false
+jxmValidator.isUnNegativeNumber('-3', {isStrict: true}); // => false
+
+jxmValidator.isUnNegativeNumber(''); // => false
+jxmValidator.isUnNegativeNumber('   '); // => false
+jxmValidator.isUnNegativeNumber(null); // => false
+jxmValidator.isUnNegativeNumber(undefined); // => false
+
+jxmValidator.isUnNegativeNumber(NaN); // => false
+jxmValidator.isUnNegativeNumber(Number.POSITIVE_INFINITY); // => false
+jxmValidator.isUnNegativeNumber(Number.NEGATIVE_INFINITY); // => false
 ```

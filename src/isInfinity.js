@@ -4,7 +4,7 @@ var POSITIVE_INFINITY = 1 / 0;
 var NEGATIVE_INFINITY = -1 / 0;
 
 /**
- * 校验 `val` 是否为 Infinity, -Infinity
+ * 校验参数 `val` 是否为 Infinity, -Infinity
  *
  * 若参数 `val` 是 Infinity, -Infinity, 则返回 true, 否则返回 false
  *

@@ -3,7 +3,7 @@ var DATA_TYPE_ENUM = require('./internal/enum/dataTypeEnum');
 var assertDataType = require('./internal/assertDataType');
 
 /**
- * 校验 `val` 是否为 string
+ * 校验参数 `val` 是否为 string
  *
  * 若参数 `val` 类型为 `string` 或者 `[object String]` 时，返回 true,
  *

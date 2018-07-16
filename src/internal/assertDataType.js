@@ -21,9 +21,9 @@ var DATA_TYPE_REPLACE_REX = /^\[object\u0020|\]$/ig;
 var _toString = Object.prototype.toString;
 
 /**
- * 断言`val`的数据类型是否为`type`对应的数据类型
+ * 断言 `val` 的数据类型是否为 `type` 对应的数据类型
  *
- * 若是参数`val`的数据类型与`type`相同，则返回 true,
+ * 若是参数 `val` 的数据类型与 `type` 相同，则返回 true,
  *
  * 若是不相同，则返回 false
  *

@@ -1,6 +1,6 @@
 
 /**
- * 校验 `val` 是否为 NaN
+ * 校验参数 `val` 是否为 NaN
  *
  * 若参数 `val` 是 NaN，则返回 true，否则返回 false
  *

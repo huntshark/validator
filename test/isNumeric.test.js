@@ -18,6 +18,11 @@ describe('isNumeric test', function() {
     isNumeric('3').should.equal(true);
   });
 
+  // 3
+  it(`isNumeric(3, {isStrict: true}) === true`, function() {
+    isNumeric(3, {isStrict: true}).should.equal(true);
+  });
+
   // '3'
   it(`isNumeric('3', {isStrict: true}) === false`, function() {
     isNumeric('3', {isStrict: true}).should.equal(false);
@@ -46,6 +51,11 @@ describe('isNumeric test', function() {
   // ''
   it(`isNumeric('') === false`, function() {
     isNumeric('').should.equal(false);
+  });
+
+  // '   '
+  it(`isNumeric('   ') === false`, function() {
+    isNumeric('   ').should.equal(false);
   });
 
   // null

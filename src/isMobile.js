@@ -4,7 +4,7 @@ var LOCALE_ENUM = require('./internal/enum/localeTypeEnum');
 var REGEX_ENUM = require('./internal/enum/regexEnum');
 
 /**
- * 校验 `val` 是否为手机号码
+ * 校验参数 `val` 是否为手机号码
  *
  * 若参数 `val` 符合参数 `locale`(默认值:  LOCALE_ENUM.ZHCN) 指定地区的手机号码格式, 则返回 true, 否则返回 false
  *

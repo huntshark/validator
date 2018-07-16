@@ -22,4 +22,5 @@ jxmValidator.isEmail('575099329@qq'); // => false
 jxmValidator.isEmail('dotx575099329@gmail.com'); // => true
 jxmValidator.isEmail('dotx575099329@163.com'); // => true
 jxmValidator.isEmail('dotx575099329@qingniu.co'); // => true
+jxmValidator.isEmail(333); // => false
 ```
