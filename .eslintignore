@@ -1,3 +1,2 @@
-# .eslintrc.yaml
-# .travis.yml
-# .gitignore
+!src
+*

@@ -7,29 +7,29 @@ chai.use(require('chai-things'));
 should();
 
 // Test
-describe('isUndefined test', function() {
+describe('isUndefined test', function () {
   // undefined
-  it(`isUndefined(undefined) === true`, function() {
+  it(`isUndefined(undefined) === true`, function () {
     isUndefined(undefined).should.equal(true);
   });
 
   // null
-  it(`isUndefined(null) === false`, function() {
+  it(`isUndefined(null) === false`, function () {
     isUndefined(null).should.equal(false);
   });
 
   // 0
-  it(`isUndefined(0) === false`, function() {
+  it(`isUndefined(0) === false`, function () {
     isUndefined(0).should.equal(false);
   });
 
   // ''
-  it(`isUndefined('') === false`, function() {
+  it(`isUndefined('') === false`, function () {
     isUndefined('').should.equal(false);
   });
 
   // 'undefined'
-  it(`isUndefined('undefined') === false`, function() {
+  it(`isUndefined('undefined') === false`, function () {
     isUndefined('undefined').should.equal(false);
   });
 });

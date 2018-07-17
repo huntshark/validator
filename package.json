@@ -12,7 +12,7 @@
     "jxmCoverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
     "jxmCoverage:build": "istanbul cover _mocha -- -R spec --timeout 5000 --recursive",
     "jxmCoverage:check": "istanbul check-coverage",
-    "jxmEslint": "eslint --config .eslintrc.yaml src --ignore-path .eslintignore"
+    "jxmEslint": "eslint --config .eslintrc.yaml * --ignore-path .eslintignore --quiet"
   },
   "repository": {
     "type": "git",

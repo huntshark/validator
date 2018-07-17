@@ -9,6 +9,6 @@ module.exports = {
 
     // lib
     library: "jxmValidator",
-    libraryTarget: 'umd',
-  },
+    libraryTarget: 'umd'
+  }
 };
