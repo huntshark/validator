@@ -61,4 +61,4 @@ If you see all changes, please open [here](https://github.com/sTdobTs/validator/
 
 ## License
 
-[MIT](LICENSE)
+[MIT License](LICENSE)
