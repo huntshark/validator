@@ -2,19 +2,19 @@
 extends: 'eslint-config-airbnb-es5'
 
 # 全局环境变量
-# env:
-#   # es6 语法
-#   es6: false
-#   # browser
-#   browser: true
-#   # node
-#   node: true
-#   # commonjs
-#   commonjs: true
-#   # amd
-#   amd: true
-#   # mocha
-#   mocha: true
+env:
+  # es6
+  es6: false
+  # browser
+  browser: true
+  # node
+  node: true
+  # commonjs
+  commonjs: true
+  # amd
+  amd: true
+  # mocha
+  mocha: true
 
 # js 语言选项
 parserOptions:
@@ -38,3 +38,15 @@ rules:
     # 禁用不必要的转义字符
     no-useless-escape:
       - 0
+
+    # 要求或禁止使用命名的 function 表达式
+    func-names:
+      - 0
+
+    # 强制使用一致的反勾号、双引号或单引号
+    quotes:
+      - 0
+
+# globals:
+#   describe: true
+#   it: true

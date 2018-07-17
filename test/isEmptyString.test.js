@@ -7,49 +7,49 @@ chai.use(require('chai-things'));
 should();
 
 // Test
-describe('isEmptyString test', function() {
+describe('isEmptyString test', function () {
   // 3
-  it(`isEmptyString(3) === false`, function() {
+  it(`isEmptyString(3) === false`, function () {
     isEmptyString(3).should.equal(false);
   });
 
   // '3'
-  it(`isEmptyString('3') === false`, function() {
+  it(`isEmptyString('3') === false`, function () {
     isEmptyString('3').should.equal(false);
   });
 
   // ''
-  it(`isEmptyString('') === true`, function() {
+  it(`isEmptyString('') === true`, function () {
     isEmptyString('').should.equal(true);
   });
 
   // ''
-  it(`isEmptyString('', {isStrict: false}) === true`, function() {
+  it(`isEmptyString('', {isStrict: false}) === true`, function () {
     isEmptyString('', {isStrict: false}).should.equal(true);
   });
 
   // '   '
-  it(`isEmptyString('   ') === true`, function() {
+  it(`isEmptyString('   ') === true`, function () {
     isEmptyString('   ').should.equal(true);
   });
 
   // '   '
-  it(`isEmptyString('   ', {isStrict: false}) === false`, function() {
+  it(`isEmptyString('   ', {isStrict: false}) === false`, function () {
     isEmptyString('   ', {isStrict: false}).should.equal(false);
   });
 
   // null
-  it(`isEmptyString(null) === false`, function() {
+  it(`isEmptyString(null) === false`, function () {
     isEmptyString(null).should.equal(false);
   });
 
   // undefined
-  it(`isEmptyString(undefined) === false`, function() {
+  it(`isEmptyString(undefined) === false`, function () {
     isEmptyString(undefined).should.equal(false);
   });
 
   // NaN
-  it(`isEmptyString(NaN) === false`, function() {
+  it(`isEmptyString(NaN) === false`, function () {
     isEmptyString(NaN).should.equal(false);
   });
 });

@@ -7,34 +7,34 @@ chai.use(require('chai-things'));
 should();
 
 // Test
-describe('isNil test', function() {
+describe('isNil test', function () {
   // null
-  it(`isNil(null) === true`, function() {
+  it(`isNil(null) === true`, function () {
     isNil(null).should.equal(true);
   });
 
   // undefined
-  it(`isNil(undefined) === true`, function() {
+  it(`isNil(undefined) === true`, function () {
     isNil(undefined).should.equal(true);
   });
 
   // 0
-  it(`isNil(0) === false`, function() {
+  it(`isNil(0) === false`, function () {
     isNil(0).should.equal(false);
   });
 
   // ''
-  it(`isNil('') === false`, function() {
+  it(`isNil('') === false`, function () {
     isNil('').should.equal(false);
   });
 
   // 'null'
-  it(`isNil('null') === false`, function() {
+  it(`isNil('null') === false`, function () {
     isNil('null').should.equal(false);
   });
 
   // 'undefined'
-  it(`isNil('undefined') === false`, function() {
+  it(`isNil('undefined') === false`, function () {
     isNil('undefined').should.equal(false);
   });
 });

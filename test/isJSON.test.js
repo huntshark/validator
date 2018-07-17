@@ -7,34 +7,34 @@ chai.use(require('chai-things'));
 should();
 
 // Test
-describe('isJSON test', function() {
+describe('isJSON test', function () {
   // '{"a": 3}'
-  it(`isJSON('{"a": 3}') === true`, function() {
+  it(`isJSON('{"a": 3}') === true`, function () {
     isJSON('{"a": 3}').should.equal(true);
   });
 
   // {a: 3}
-  it(`isJSON('{a: 3}') === false`, function() {
+  it(`isJSON('{a: 3}') === false`, function () {
     isJSON('{a: 3}').should.equal(false);
   });
 
   // '[3, 4]'
-  it(`isJSON('[3, 4]') === false`, function() {
+  it(`isJSON('[3, 4]') === false`, function () {
     isJSON('[3, 4]').should.equal(false);
   });
 
   // '3'
-  it(`isJSON('3') === false`, function() {
+  it(`isJSON('3') === false`, function () {
     isJSON('3').should.equal(false);
   });
 
   // null
-  it(`isJSON(null) === false`, function() {
+  it(`isJSON(null) === false`, function () {
     isJSON(null).should.equal(false);
   });
 
   // {}
-  it(`isJSON({}) === false`, function() {
+  it(`isJSON({}) === false`, function () {
     isJSON({}).should.equal(false);
   });
 });

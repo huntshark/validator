@@ -1,6 +1,6 @@
 
+const UglifyJs = require('uglifyjs-webpack-plugin');
 const path = require('path');
-const uglify = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
@@ -10,11 +10,11 @@ module.exports = {
 
     // lib
     library: "jxmValidator",
-    libraryTarget: 'umd',
+    libraryTarget: 'umd'
   },
 
   // compress
   plugins: [
-    new uglify()
-  ],
+    new UglifyJs()
+  ]
 };
