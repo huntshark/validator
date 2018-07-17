@@ -8,7 +8,6 @@ validator
 [![License](https://img.shields.io/npm/l/jxm-validator.svg?maxAge=2592000)](https://github.com/sTdobTs/validator/blob/master/LICENSE)
 ![NPM bundle size (minified)](https://img.shields.io/bundlephobia/min/jxm-validator.svg)
 ![NPM bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/jxm-validator.svg)
-[![Downloads](http://img.shields.io/npm/dm/jxm-validator.svg)](https://npmjs.org/package/jxm-validator)
 
 > [中文](https://github.com/sTdobTs/validator/blob/master/README.zh-CN.md) | [English](https://github.com/sTdobTs/validator)
 
