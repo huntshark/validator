@@ -2,7 +2,7 @@
 API 文档
 ===========================
 
-假设，您已经阅读，并且知道如何了使用，可以直接跳过该步骤。若是还没有看过的同学，请看这里：
+假设，您已经阅读，并且已经知道了如何使用，可以直接跳过该步骤。还不清楚如何使用的同学，请看这里：
 
 ```javascript
   const jxmValidator = require('jxm-validator');
@@ -10,7 +10,9 @@ API 文档
   jxmValidator.isNull(null);
 ```
 
-接下来，一起来看 API 吧。若是, 您想了解更多的 API 信息，请点击相应的 API 即可
+没错，就是这么简单。
+
+接下来，我们一起来看 API 吧。若是您想了解更多的 API 信息，可以直接点击相应的 API，即可查看相关信息。
 
 * Null/Undefined
   - [isUndefined(val)](./APIs/isUndefined.md)
