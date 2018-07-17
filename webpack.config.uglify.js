@@ -13,7 +13,7 @@ module.exports = {
     libraryTarget: 'umd',
   },
 
-  // 压缩
+  // compress
   plugins: [
     new uglify()
   ],
