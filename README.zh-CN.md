@@ -11,7 +11,7 @@ validator
 
 > [中文](https://github.com/sTdobTs/validator/blob/master/README.zh-CN.md) | [English](https://github.com/sTdobTs/validator)
 
-基于 ECMAScript 5.1 实现的验证工具包，提供了丰富的校验和工具方法，在 Node.js 和现代浏览器中可以使用。
+基于 ECMAScript 5.1 实现的验证工具包，提供了丰富的校验方法，在 Node.js 和现代浏览器中可以使用。
 
 ## 安装
 
