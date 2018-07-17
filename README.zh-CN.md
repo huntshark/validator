@@ -61,4 +61,4 @@ API 文档，请看 [这里](https://github.com/sTdobTs/validator/blob/master/do
 
 ## 许可协议
 
-[MIT](LICENSE)
+[MIT License](LICENSE)
