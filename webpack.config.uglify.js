@@ -9,7 +9,7 @@ module.exports = {
     filename: 'validator.min.js',
 
     // lib
-    library: "jxmValidator",
+    library: 'jxmValidator',
     libraryTarget: 'umd'
   },
 
