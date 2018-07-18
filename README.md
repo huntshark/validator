@@ -56,7 +56,7 @@ If you have any question, please open an issue [here](https://github.com/sTdobTs
 
 ## Changelog
 
-If you see all changes, please open [here](https://github.com/sTdobTs/validator/wiki/Changelog)
+If you see all changes, please open [here](https://github.com/sTdobTs/validator/wiki/Changelog).
 
 ## License
 
