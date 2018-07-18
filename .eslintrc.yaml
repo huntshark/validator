@@ -45,7 +45,9 @@ rules:
 
     # 强制使用一致的反勾号、双引号或单引号
     quotes:
-      - 0
+      - 2
+      - single
+      - allowTemplateLiterals: true
 
 # globals:
 #   describe: true
