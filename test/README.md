@@ -2,4 +2,4 @@
 Unit Test
 ===========================
 
-base on `mocha`, `chai`, `should`
+based on `mocha`, `chai`, `should`

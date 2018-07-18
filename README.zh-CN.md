@@ -52,7 +52,7 @@ API 文档，请看 [这里](https://github.com/sTdobTs/validator/blob/master/do
 
 ## 讨论交流
 
-如果您有任何疑问，可以在 [这里](https://github.com/sTdobTs/validator/issues) 提交 issue。
+如果您有任何疑问，可以在 [这里](https://github.com/sTdobTs/validator/issues) 提交 issue
 
 ## 变更记录
 
