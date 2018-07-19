@@ -33,7 +33,7 @@ API 文档
   - [isZero(val, options)](./APIs/isZero.md)
   - [isUnZero(val, options)](./APIs/isUnZero.md)
   -
-  - [isPosistiveNumber(val, options)](./APIs/isPositiveNumber.md)
+  - [isPositiveNumber(val, options)](./APIs/isPositiveNumber.md)
   - [isNegativeNumber(val, options)](./APIs/isNegativeNumber.md)
   - [isUnPositiveNumber(val, options)](./APIs/isUnPositiveNumber.md)
   - [isUnNegativeNumber(val, options)](./APIs/isUnNegativeNumber.md)
@@ -71,4 +71,3 @@ API 文档
 * Other
   - [isEmail(val)](./APIs/isEmail.md)
   - [isIpv4(val)](./APIs/isIpv4.md)
-
