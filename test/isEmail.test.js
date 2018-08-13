@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isEmail test', function () {
+describe('isEmail', function () {
   // '575099329@qq.com'
   it(`isEmail('575099329@qq.com') === true`, function () {
     isEmail('575099329@qq.com').should.equal(true);

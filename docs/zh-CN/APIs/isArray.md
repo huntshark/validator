@@ -18,11 +18,10 @@
 ```javascript
 jxmValidator.isArray([]); // => true
 jxmValidator.isArray({}); // => false
-jxmValidator.isArray(parseInt); // => false
 jxmValidator.isArray(new Date()); // => false
 
 jxmValidator.isArray(null); // => false
+
 jxmValidator.isArray(Object({})); // => false
 jxmValidator.isArray(Object([])); // => true
-jxmValidator.isArray(new Object([])); // => true
 ```

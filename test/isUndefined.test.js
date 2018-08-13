@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isUndefined test', function () {
+describe('isUndefined', function () {
   // undefined
   it(`isUndefined(undefined) === true`, function () {
     isUndefined(undefined).should.equal(true);

@@ -39,13 +39,11 @@ jxmValidator.isUnEmptyString('3'); // => true
 jxmValidator.isUnEmptyString(0); // => false
 
 jxmValidator.isUnEmptyString(''); // => false
-jxmValidator.isUnEmptyString('', {isStrict: false})); // => false
-
 jxmValidator.isUnEmptyString('  '); // => false
+jxmValidator.isUnEmptyString('', {isStrict: false})); // => false
 jxmValidator.isUnEmptyString('  ', {isStrict: false}); // => true
 
 jxmValidator.isUnEmptyString(null); // => false
 jxmValidator.isUnEmptyString(undefined); // => false
-
 jxmValidator.isUnEmptyString(NaN); // => false
 ```

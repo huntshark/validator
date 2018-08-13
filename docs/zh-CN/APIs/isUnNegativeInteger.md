@@ -36,10 +36,18 @@
 #### 示例：
 
 ```javascript
+jxmValidator.isUnNegativeInteger(.3); // => false
 jxmValidator.isUnNegativeInteger(3); // => true
+jxmValidator.isUnNegativeInteger(3.3); // => false
+jxmValidator.isUnNegativeInteger('.3'); // => false
 jxmValidator.isUnNegativeInteger('3'); // => true
+jxmValidator.isUnNegativeInteger('3.3'); // => false
+jxmValidator.isUnNegativeInteger(.3, {isStrict: true}); // => false
 jxmValidator.isUnNegativeInteger(3, {isStrict: true}); // => true
+jxmValidator.isUnNegativeInteger(3.3, {isStrict: true}); // => false
+jxmValidator.isUnNegativeInteger('.3', {isStrict: true}); // => false
 jxmValidator.isUnNegativeInteger('3', {isStrict: true}); // => false
+jxmValidator.isUnNegativeInteger('3.3', {isStrict: true}); // => false
 
 jxmValidator.isUnNegativeInteger(0); // => true
 jxmValidator.isUnNegativeIntegerv('0'); // => true
@@ -50,16 +58,6 @@ jxmValidator.isUnNegativeInteger(-3); // => false
 jxmValidator.isUnNegativeInteger('-3'); // => false
 jxmValidator.isUnNegativeInteger(-3, {isStrict: true}); // => false
 jxmValidator.isUnNegativeInteger('-3', {isStrict: true}); // => false
-
-jxmValidator.isUnNegativeInteger(3.3); // => false
-jxmValidator.isUnNegativeInteger('3.3'); // => false
-jxmValidator.isUnNegativeInteger(3.3, {isStrict: true}); // => false
-jxmValidator.isUnNegativeInteger('3.3', {isStrict: true}); // => false
-
-jxmValidator.isUnNegativeInteger(-3.3); // => false
-jxmValidator.isUnNegativeInteger('-3.3'); // => false
-jxmValidator.isUnNegativeInteger(-3.3, {isStrict: true}); // => false
-jxmValidator.isUnNegativeInteger('-3.3', {isStrict: true}); // => false
 
 jxmValidator.isUnNegativeInteger(''); // => false
 jxmValidator.isUnNegativeInteger('   '); // => false

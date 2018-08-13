@@ -36,10 +36,18 @@
 #### 示例：
 
 ```javascript
+jxmValidator.isUnPositiveNumber(-.3); // => true
 jxmValidator.isUnPositiveNumber(-3); // => true
+jxmValidator.isUnPositiveNumber(-3.5); // => true
+jxmValidator.isUnPositiveNumber('-.3'); // => true
 jxmValidator.isUnPositiveNumber('-3'); // => true
+jxmValidator.isUnPositiveNumber('-3.5'); // => true
+jxmValidator.isUnPositiveNumber(-.3, {isStrict: true}); // => true
 jxmValidator.isUnPositiveNumber(-3, {isStrict: true}); // => true
+jxmValidator.isUnPositiveNumber(-3.5, {isStrict: true}); // => true
+jxmValidator.isUnPositiveNumber('-.3', {isStrict: true}); // => false
 jxmValidator.isUnPositiveNumber('-3', {isStrict: true}); // => false
+jxmValidator.isUnPositiveNumber('-3.5', {isStrict: true}); // => false
 
 jxmValidator.isUnPositiveNumber(0); // => true
 jxmValidator.isUnPositiveNumber('0'); // => true

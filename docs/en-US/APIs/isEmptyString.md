@@ -40,13 +40,11 @@ jxmValidator.isEmptyString('3'); // => false
 jxmValidator.isEmptyString(0); // => false
 
 jxmValidator.isEmptyString(''); // => true
-jxmValidator.isEmptyString('', {isStrict: false})); // => true
-
 jxmValidator.isEmptyString('  '); // => true
+jxmValidator.isEmptyString('', {isStrict: false})); // => true
 jxmValidator.isEmptyString('  ', {isStrict: false}); // => false
 
 jxmValidator.isEmptyString(null); // => false
 jxmValidator.isEmptyString(undefined); // => false
-
 jxmValidator.isEmptyString(NaN); // => false
 ```

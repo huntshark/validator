@@ -18,7 +18,6 @@
 #### 示例：
 
 ```javascript
-// number
 jxmValidator.isNumber(3); // => true
 jxmValidator.isNumber('3'); // => false
 
@@ -30,12 +29,5 @@ jxmValidator.isNumber(''); // => false
 jxmValidator.isNumber(true); // => false
 jxmValidator.isNumber(null); // => false
 jxmValidator.isNumber(undefined); // => false
-
-// number 包装对象
-jxmValidator.isNumber(Number(3)); // => true
-jxmValidator.isNumber(new Number(3)); // => true
-
 jxmValidator.isNumber({}); // => false
-jxmValidator.isNumber(Object(3)); // => true
-jxmValidator.isNumber(Object('3')); // => false
 ```

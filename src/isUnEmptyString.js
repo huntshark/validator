@@ -24,8 +24,8 @@ var _isObject = require('./isObject');
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
- * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @return  {Booean} 返回校验结果
+ * @version 0.0.7
  * @since   0.0.4
  */
 function _isUnEmptyString(val, options) {
@@ -35,7 +35,14 @@ function _isUnEmptyString(val, options) {
     return false;
   }
 
-  return opts.isStrict === false ? val !== '' : (val.trim() !== '');
+  if (opts.isStrict === false) {
+    return val !== '';
+  }
+
+  // TODO, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+  // String.prototype.trim, 在 ECMAScript 5.1 定义, 在 JavaScript 1.8.1 实现
+  // return val.replace(REGEX_ENUM.LEFT_WHITE_SPACE_REX, '').replace(REGEX_ENUM.RIGHT_WHITE_SPACE_REX, '') !== '';
+  return val.trim() !== '';
 }
 
 module.exports = _isUnEmptyString;

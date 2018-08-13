@@ -34,12 +34,20 @@
       > 若是非严格模式, 则该参数值校验后, 返回 true
 
 #### 示例：
-s
+
 ```javascript
+jxmValidator.isUnNegativeNumber(.3); // => true
 jxmValidator.isUnNegativeNumber(3); // => true
+jxmValidator.isUnNegativeNumber(3.5); // => true
+jxmValidator.isUnNegativeNumber('.3'); // => true
 jxmValidator.isUnNegativeNumber('3'); // => true
+jxmValidator.isUnNegativeNumber('3.5'); // => true
+jxmValidator.isUnNegativeNumber(.3, {isStrict: true}); // => true
 jxmValidator.isUnNegativeNumber(3, {isStrict: true}); // => true
+jxmValidator.isUnNegativeNumber(3.5, {isStrict: true}); // => true
+jxmValidator.isUnNegativeNumber('.3', {isStrict: true}); // => false
 jxmValidator.isUnNegativeNumber('3', {isStrict: true}); // => false
+jxmValidator.isUnNegativeNumber('3.5', {isStrict: true}); // => false
 
 jxmValidator.isUnNegativeNumber(0); // => true
 jxmValidator.isUnNegativeNumber('0'); // => true

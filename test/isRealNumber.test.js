@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isRealNumber test', function () {
+describe('isRealNumber', function () {
   // 3
   it(`isRealNumber(3) === true`, function () {
     isRealNumber(3).should.equal(true);
@@ -31,6 +30,11 @@ describe('isRealNumber test', function () {
   // '3a'
   it(`isRealNumber('3a') === false`, function () {
     isRealNumber('3a').should.equal(false);
+  });
+
+  // '3a'
+  it(`isRealNumber('3a', {isStrict: true}) === false`, function () {
+    isRealNumber('3a', {isStrict: true}).should.equal(false);
   });
 
   // NaN
@@ -68,16 +72,6 @@ describe('isRealNumber test', function () {
     isRealNumber(undefined).should.equal(false);
   });
 
-  // Number(3)
-  it(`isRealNumber(Number(3)) === true`, function () {
-    isRealNumber(Number(3)).should.equal(true);
-  });
-
-  // new Number(3)
-  it(`isRealNumber(new Number(3)) === true`, function () {
-    isRealNumber(new Number(3)).should.equal(true);
-  });
-
   // {}
   it(`isRealNumber({}) === false`, function () {
     isRealNumber({}).should.equal(false);
@@ -91,6 +85,11 @@ describe('isRealNumber test', function () {
   // Object('3')
   it(`isRealNumber(Object('3')) === true`, function () {
     isRealNumber(Object('3')).should.equal(true);
+  });
+
+  // Object(3)
+  it(`isRealNumber(Object(3), {isStrict: true}) === true`, function () {
+    isRealNumber(Object(3), {isStrict: true}).should.equal(true);
   });
 
   // Object('3')

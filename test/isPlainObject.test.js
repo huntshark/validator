@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isPlainObject test', function () {
+describe('isPlainObject', function () {
   // {}
   it(`isPlainObject({}) === true`, function () {
     isPlainObject({}).should.equal(true);
@@ -28,19 +27,19 @@ describe('isPlainObject test', function () {
     isPlainObject(new Date()).should.equal(false);
   });
 
-  // Object({})
-  it(`isPlainObject(Object({})) === true`, function () {
-    isPlainObject(Object({})).should.equal(true);
-  });
-
   // Object('3')
   it(`isPlainObject(Object('3')) === false`, function () {
     isPlainObject(Object('3')).should.equal(false);
   });
 
-  // new Object('3')
-  it(`isPlainObject(new Object('3')) === false`, function () {
-    isPlainObject(new Object('3')).should.equal(false);
+  // Object([])
+  it(`isPlainObject(Object([])) === false`, function () {
+    isPlainObject(Object([])).should.equal(false);
+  });
+
+  // Object({})
+  it(`isPlainObject(Object({})) === true`, function () {
+    isPlainObject(Object({})).should.equal(true);
   });
 
   // null

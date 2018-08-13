@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isJSON test', function () {
+describe('isJSON', function () {
   // '{"a": 3}'
   it(`isJSON('{"a": 3}') === true`, function () {
     isJSON('{"a": 3}').should.equal(true);

@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isIpv4 test', function () {
+describe('isIpv4', function () {
   // '192.168.1.1'
   it(`isIpv4('192.168.1.1') === true`, function () {
     isIpv4('192.168.1.1').should.equal(true);

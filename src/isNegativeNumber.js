@@ -28,7 +28,7 @@ var REGEX_ENUM = require('./internal/enum/regexEnum');
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
  * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @version 0.0.7
  * @since   0.0.4
  */
 function _isNegativeNumber(val, options) {

@@ -51,10 +51,6 @@ jxmValidator.isZero('   '); // => false
 jxmValidator.isZero(null); // => false
 jxmValidator.isZero(undefined); // => false
 
-jxmValidator.isZero(Number(0)); // => true
-jxmValidator.isZero(new Number(0)); // => true
-jxmValidator.isZero(new Number('0')); // => true
-
 jxmValidator.isZero(Object(0)); // => true
 jxmValidator.isZero(Object('0')); // => true
 jxmValidator.isZero(Object('0', {isStrict: true})); // => false

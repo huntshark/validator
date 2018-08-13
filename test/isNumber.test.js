@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isNumber test', function () {
+describe('isNumber', function () {
   // 3
   it(`isNumber(3) === true`, function () {
     isNumber(3).should.equal(true);
@@ -43,6 +42,11 @@ describe('isNumber test', function () {
     isNumber(true).should.equal(false);
   });
 
+  // false
+  it(`isNumber(false) === false`, function () {
+    isNumber(false).should.equal(false);
+  });
+
   // null
   it(`isNumber(null) === false`, function () {
     isNumber(null).should.equal(false);
@@ -51,16 +55,6 @@ describe('isNumber test', function () {
   // undefined
   it(`isNumber(undefined) === false`, function () {
     isNumber(undefined).should.equal(false);
-  });
-
-  // Number(3)
-  it(`isNumber(Number(3)) === true`, function () {
-    isNumber(Number(3)).should.equal(true);
-  });
-
-  // new Number(3)
-  it(`isNumber(new Number(3)) === true`, function () {
-    isNumber(new Number(3)).should.equal(true);
   });
 
   // {}
@@ -76,5 +70,30 @@ describe('isNumber test', function () {
   // Object('3')
   it(`isNumber(Object('3')) === false`, function () {
     isNumber(Object('3')).should.equal(false);
+  });
+
+  // Object('')
+  it(`isNumber(Object('')) === false`, function () {
+    isNumber(Object('')).should.equal(false);
+  });
+
+  // Object(true)
+  it(`isNumber(Object(true)) === false`, function () {
+    isNumber(Object(true)).should.equal(false);
+  });
+
+  // Object(false)
+  it(`isNumber(Object(false)) === false`, function () {
+    isNumber(Object(false)).should.equal(false);
+  });
+
+  // Object(null)
+  it(`isNumber(Object(null)) === false`, function () {
+    isNumber(Object(null)).should.equal(false);
+  });
+
+  // Object(undefined)
+  it(`isNumber(Object(undefined)) === false`, function () {
+    isNumber(Object(undefined)).should.equal(false);
   });
 });

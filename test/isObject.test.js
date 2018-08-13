@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isObject test', function () {
+describe('isObject', function () {
   // {}
   it(`isObject({}) === true`, function () {
     isObject({}).should.equal(true);
@@ -28,19 +27,19 @@ describe('isObject test', function () {
     isObject(new Date()).should.equal(false);
   });
 
-  // Object({})
-  it(`isObject(Object({})) === true`, function () {
-    isObject(Object({})).should.equal(true);
-  });
-
   // Object('3')
   it(`isObject(Object('3')) === false`, function () {
     isObject(Object('3')).should.equal(false);
   });
 
-  // new Object('3')
-  it(`isObject(new Object('3')) === false`, function () {
-    isObject(new Object('3')).should.equal(false);
+  // Object([])
+  it(`isObject(Object([])) === false`, function () {
+    isObject(Object([])).should.equal(false);
+  });
+
+  // Object({})
+  it(`isObject(Object({})) === true`, function () {
+    isObject(Object({})).should.equal(true);
   });
 
   // null
@@ -54,7 +53,7 @@ describe('isObject test', function () {
   });
 
   // new Class()
-  function Class() {};
+  function Class() {}
   it(`isObject(new Class()) === true`, function () {
     isObject(new Class()).should.equal(true);
   });

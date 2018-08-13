@@ -51,9 +51,6 @@ jxmValidator.isRealNumber('   '); // => false
 jxmValidator.isRealNumber(null); // => false
 jxmValidator.isRealNumber(undefined); // => false
 
-jxmValidator.isRealNumber(Number(3)); // => true
-jxmValidator.isRealNumber(new Number(3)); // => true
-
 jxmValidator.isRealNumber({}); // => false
 jxmValidator.isRealNumber(Object(3)); // => true
 jxmValidator.isRealNumber(Object('3')); // => true

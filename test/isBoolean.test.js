@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isBoolean test', function () {
+describe('isBoolean', function () {
   // true
   it(`isBoolean(true) === true`, function () {
     isBoolean(true).should.equal(true);
@@ -38,16 +37,6 @@ describe('isBoolean test', function () {
     isBoolean('').should.equal(false);
   });
 
-  // Boolean({})
-  it(`isBoolean(Boolean({})) === true`, function () {
-    isBoolean(Boolean({})).should.equal(true);
-  });
-
-  // new Boolean({})
-  it(`isBoolean(new Boolean({})) === true`, function () {
-    isBoolean(new Boolean({})).should.equal(true);
-  });
-
   // {}
   it(`isBoolean({}) === false`, function () {
     isBoolean({}).should.equal(false);
@@ -56,5 +45,30 @@ describe('isBoolean test', function () {
   // Object(true)
   it(`isBoolean(Object(true)) === true`, function () {
     isBoolean(Object(true)).should.equal(true);
+  });
+
+  // Object(false)
+  it(`isBoolean(Object(false)) === true`, function () {
+    isBoolean(Object(false)).should.equal(true);
+  });
+
+  // Object(null)
+  it(`isBoolean(Object(null)) === false`, function () {
+    isBoolean(Object(null)).should.equal(false);
+  });
+
+  // Object(undefined)
+  it(`isBoolean(Object(undefined)) === false`, function () {
+    isBoolean(Object(undefined)).should.equal(false);
+  });
+
+  // Object(0)
+  it(`isBoolean(Object(0)) === false`, function () {
+    isBoolean(Object(0)).should.equal(false);
+  });
+
+  // Object('')
+  it(`isBoolean(Object('')) === false`, function () {
+    isBoolean(Object('')).should.equal(false);
   });
 });

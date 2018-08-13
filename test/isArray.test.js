@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isArray test', function () {
+describe('isArray', function () {
   // []
   it(`isArray([]) === true`, function () {
     isArray([]).should.equal(true);
@@ -41,10 +40,5 @@ describe('isArray test', function () {
   // Object([])
   it(`isArray(Object([])) === true`, function () {
     isArray(Object([])).should.equal(true);
-  });
-
-  // new Object([])
-  it(`isArray(new Object([])) === true`, function () {
-    isArray(new Object([])).should.equal(true);
   });
 });

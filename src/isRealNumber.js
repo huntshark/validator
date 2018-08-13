@@ -39,7 +39,7 @@ function _isRealNumber(val, options) {
     return !_isNaN(val);
   }
 
-  // 若是非严格模式, 则对字符串 '3' 进行判定, 需要排除 '   ' 字符串
+  // 若是非严格模式, 则对字符串 '3' 进行判定, 需要排除 '', '   ' 字符串
   if (opts.isStrict !== true && _isUnEmptyString(val, {isStrict: true})) {
     var detal = val - 0;
 

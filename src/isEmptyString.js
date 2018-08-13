@@ -12,8 +12,7 @@ var _isObject = require('./isObject');
  * 若参数 `val` 不是 string, 则直接返回 false
  * 若参数 `val` 是 string, 并且为空，则返回 true, 否则, 返回 false
  *
- * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true,
- * 则会对参数 `val` 进行两端去除空白（空字符），之后在校验其是否为空字符串
+ * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则会对参数 `val` 进行两端去除空白（空字符），之后在校验其是否为空字符串
  *
  * e.g.
  *
@@ -25,7 +24,7 @@ var _isObject = require('./isObject');
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
  * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @version 0.0.7
  * @since   0.0.5
  */
 function _isEmptyString(val, options) {
@@ -35,7 +34,14 @@ function _isEmptyString(val, options) {
     return false;
   }
 
-  return opts.isStrict === false ? val === '' : (val.trim() === '');
+  if (opts.isStrict === false) {
+    return val === '';
+  }
+
+  // TODO, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+  // String.prototype.trim, 在 ECMAScript 5.1 定义, 在 JavaScript 1.8.1 实现
+  // return val.replace(REGEX_ENUM.LEFT_WHITE_SPACE_REX, '').replace(REGEX_ENUM.RIGHT_WHITE_SPACE_REX, '') === '';
+  return val.trim() === '';
 }
 
 module.exports = _isEmptyString;

@@ -23,6 +23,7 @@ jxmValidator.isInfinity(NaN); // => false
 jxmValidator.isInfinity(null); // => false
 jxmValidator.isInfinity(undefined); // => false
 
+jxmValidator.isInfinity(0); // => false
 jxmValidator.isInfinity(3); // => false
 jxmValidator.isInfinity(''); // => false
 ```

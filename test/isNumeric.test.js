@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isNumeric test', function () {
+describe('isNumeric', function () {
   // 3
   it(`isNumeric(3) === true`, function () {
     isNumeric(3).should.equal(true);
@@ -68,16 +67,6 @@ describe('isNumeric test', function () {
     isNumeric(undefined).should.equal(false);
   });
 
-  // Number(3)
-  it(`isNumeric(Number(3)) === true`, function () {
-    isNumeric(Number(3)).should.to.be.equal(true);
-  });
-
-  // new Number(3)
-  it(`isNumeric(new Number(3)) === true`, function () {
-    isNumeric(new Number(3)).should.equal(true);
-  });
-
   // {}
   it(`isNumeric({}) === false`, function () {
     isNumeric({}).should.equal(false);
@@ -91,6 +80,11 @@ describe('isNumeric test', function () {
   // Object('3')
   it(`isNumeric(Object('3')) === true`, function () {
     isNumeric(Object('3')).should.equal(true);
+  });
+
+  // Object(3)
+  it(`isNumeric(Object(3), {isStrict: true}) === true`, function () {
+    isNumeric(Object(3), {isStrict: true}).should.equal(true);
   });
 
   // Object('3')
