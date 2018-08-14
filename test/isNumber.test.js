@@ -32,6 +32,16 @@ describe('isNumber', function () {
     isNumber(Number.NEGATIVE_INFINITY).should.equal(true);
   });
 
+  // MAX_SAFE_INTEGER
+  it(`isNumber(Number.MAX_SAFE_INTEGER) === true`, function () {
+    isNumber(Number.MAX_SAFE_INTEGER).should.equal(true);
+  });
+
+  // MIN_SAFE_INTEGER
+  it(`isNumber(Number.MIN_SAFE_INTEGER) === true`, function () {
+    isNumber(Number.MIN_SAFE_INTEGER).should.equal(true);
+  });
+
   // ''
   it(`isNumber('') === false`, function () {
     isNumber('').should.equal(false);

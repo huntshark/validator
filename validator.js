@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -107,24 +107,30 @@ module.exports = _isObject;
 
 // 正则表达式
 var REGEX_ENUM = {
+  // POSITIVE_NUMBER_REX: /^[1-9]\d*((\.\d+))?$|^0?\.\d*[1-9]\d*$/, // 正数
+  POSITIVE_NUMBER_REX: /^[1-9]\d*(\.\d*)?$|^0?\.\d*[1-9]\d*$/, // 正数
+  NEGATIVE_NUMBER_REX: /^-[1-9]\d*(\.\d*)?$|^-0?\.\d*[1-9]\d*$/, // 负数
+  // UN_POSITIVE_NUMBER_REX: /^-[1-9]\d*(\.\d*)?$|^-0?\.\d*[1-9]\d*$|^0*(.)?0*$/, // 非正数
+  // UN_NEGATIVE_NUMBER_REX: /^[1-9]\d*(\.\d*)?$|^0?\.\d*[1-9]\d*$|^0*(.)?0*$/, // 非负数
+
   INTEGER_REX: /^-?\d+$/, // 整数
   POSITIVE_INTEGER_REX: /^[1-9]\d*$/, // 正整数
   NEGATIVE_INTEGER_REX: /^-[1-9]\d*$/, // 负整数
   UN_POSITIVE_INTEGER_REX: /^-[1-9]\d*$|^0$/, // 非正整数
   UN_NEGATIVE_INTEGER_REX: /^[1-9]\d*$|^0$/, // 非负整数
 
-  POSITIVE_NUMBER_REX: /^[1-9]\d*(\.\d)*$|^0\.\d*[1-9]\d*$/, // 正数
-  NEGATIVE_NUMBER_REX: /^-[1-9]\d*(\.\d)*$|^-0\.\d*[1-9]\d*$/, // 负数
-  UN_NEGATIVE_NUMBER_REX: /^[1-9]\d*(\.\d)*$|^0\.\d*[1-9]\d*$|^0$/, // 非负数
-  UN_POSITIVE_NUMBER_REX: /^-[1-9]\d*(\.\d)*$|^-0\.\d*[1-9]\d*$|^0$/, // 非正数
+  LEFT_WHITE_SPACE_REX: /^\s\s*/, // 左空白
+  RIGHT_WHITE_SPACE_REX: /\s\s*$/, // 右空白
 
-  EMAIL_REX: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/, // 邮箱
   TELEPHONE_REX: { // 座机
     'zh-CN': /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/
   },
   MOBILE_REX: { // 手机号码|移动电话
     'zh-CN': /^(\+?0?86-?)?1\d{10}$/
   },
+
+  // 邮箱
+  EMAIL_REX: /^[a-zA-Z0-9]+([._\\-]*[a-zA-Z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
 
   // ipv4
   IPV4_REX: /\b((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\.((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\.((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\.((?!\d\d\d)\d+|1\d\d|2[0-4]\d|25[0-5])\b/
@@ -194,7 +200,7 @@ module.exports = _isString;
 /***/ (function(module, exports) {
 
 
-// Js数据类型
+// Js 数据类型
 var DATA_TYPE_ENUM = {};
 
 // 存储类型
@@ -285,10 +291,10 @@ module.exports = _assertDataType;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var _isNaN = __webpack_require__(7);
+var _isNaN = __webpack_require__(8);
 var _isNumber = __webpack_require__(2);
 var _isObject = __webpack_require__(0);
-var _isUnEmptyString = __webpack_require__(9);
+var _isUnEmptyString = __webpack_require__(10);
 
 /**
  * 校验参数 `val` 是否为实数(有理数和无理数)
@@ -325,7 +331,7 @@ function _isRealNumber(val, options) {
     return !_isNaN(val);
   }
 
-  // 若是非严格模式, 则对字符串 '3' 进行判定, 需要排除 '   ' 字符串
+  // 若是非严格模式, 则对字符串 '3' 进行判定, 需要排除 '', '   ' 字符串
   if (opts.isStrict !== true && _isUnEmptyString(val, {isStrict: true})) {
     var detal = val - 0;
 
@@ -340,6 +346,60 @@ module.exports = _isRealNumber;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var _isObject = __webpack_require__(0);
+var _isNumber = __webpack_require__(2);
+var _isRealNumber = __webpack_require__(6);
+
+/**
+ * 校验参数 `val` 是否为零
+ *
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
+ *
+ * 若参数 `val` 为 number 类型, 并且等于零, 则返回 true, 否则返回 false
+ * 若参数 `val` 为 string 类型, 并且经过 ToNumber 转换后的数据等于零, 则返回 true, 否则返回 false
+ * 若参数 `val` 不属于以上两种类型, 则直接返回 false
+ *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
+ * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
+ *
+ * e.g.
+ *
+ * 待校验参数 '0'
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
+ *
+ * @param   {*}       val              待校验的参数
+ * @param   {Object}  options          可选参数
+ * @param   {Boolean} options.isStrict 是否严格模式
+ * @return  {Boolean} 返回校验结果
+ * @version 0.0.7
+ * @since   0.0.4
+ */
+function _isZero(val, options) {
+  var opts = _isObject(options) ? options : {};
+
+  if (_isNumber(val)) {
+    return val - 0 === 0;
+  }
+
+  if (opts.isStrict !== true) {
+    return _isRealNumber(val) && val - 0 === 0;
+  }
+
+  return false;
+}
+
+module.exports = _isZero;
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
 
@@ -355,7 +415,6 @@ module.exports = _isRealNumber;
  */
 function _isNaN(val) {
   // @TODO
-  //
   // 引用: ECMAScript5.1 15章节 [15.1.2.4](https://www.ecma-international.org/ecma-262/5.1/#sec-15.1.2.4)
   // 全局对象函数 isNaN 存在如下怪异行为: 它总是先将参数转化成数字，然后再来判断是否是 NaN
   // 因此，会导致问题:
@@ -363,11 +422,13 @@ function _isNaN(val) {
   // <=> isNaN(Number('foo')); // => true
   //
   // 解决方案: 使用 `!==`, NaN 是唯一一个不与自身恒等
+  // 引用: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN
   //
-  // 从ES6开始，Number提供了 Number.isNaN 来判断是否为 NaN
-  // e.g:
-  // Number.isNaN('foo'); // => false
-  // Number.isNaN(NaN);   // => true
+  // 从 ES6 开始，Number 提供了 Number.isNaN 来判断是否为 NaN
+  //
+  // e.g.
+  //  Number.isNaN('foo'); // => false
+  //  Number.isNaN(NaN);   // => true
   //
   return val !== val;
 }
@@ -376,7 +437,7 @@ module.exports = _isNaN;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 
@@ -402,7 +463,7 @@ module.exports = _isInfinity;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -431,8 +492,8 @@ var _isObject = __webpack_require__(0);
  * @param   {*}       val              待校验的参数
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
- * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @return  {Booean} 返回校验结果
+ * @version 0.0.7
  * @since   0.0.4
  */
 function _isUnEmptyString(val, options) {
@@ -442,19 +503,27 @@ function _isUnEmptyString(val, options) {
     return false;
   }
 
-  return opts.isStrict === false ? val !== '' : (val.trim() !== '');
+  if (opts.isStrict === false) {
+    return val !== '';
+  }
+
+  // @TODO
+  // 引用: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+  // String.prototype.trim, 在 ECMAScript 5.1 定义, 在 JavaScript 1.8.1 实现
+  // return val.replace(REGEX_ENUM.LEFT_WHITE_SPACE_REX, '').replace(REGEX_ENUM.RIGHT_WHITE_SPACE_REX, '') !== '';
+  return val.trim() !== '';
 }
 
 module.exports = _isUnEmptyString;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 var _isRealNumber = __webpack_require__(6);
-var _isInfinity = __webpack_require__(8);
+var _isInfinity = __webpack_require__(9);
 
 /**
  * 校验参数 `val` 是否为数字
@@ -492,7 +561,107 @@ module.exports = _isNumeric;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var _isNumber = __webpack_require__(2);
+var _isObject = __webpack_require__(0);
+var REGEX_ENUM = __webpack_require__(1);
+
+/**
+ * 校验参数 `val` 是否为 正数
+ *
+ * 该接口存在两种模式, 即严格模式、非严格模式
+ *
+ * 默认采用 `非严格模式`
+ *
+ * 若参数 `val` 为 number 类型, 并且是正数 则返回 true, 否则返回 false
+ * 若参数 `val` 为 string 类型, 并且通过验证为正数字符串, 则返回 true, 否则返回 false
+ * 若参数 `val` 不属于以上两种类型, 则直接返回 false
+ *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
+ * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
+ *
+ * e.g.
+ *
+ * 待校验参数 '3'
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
+ *
+ * @param   {*}       val              待校验的参数
+ * @param   {Object}  options          可选参数
+ * @param   {Boolean} options.isStrict 是否严格模式
+ * @return  {Boolean} 返回校验结果
+ * @version 0.0.7
+ * @since   0.0.4
+ */
+function _isPositiveNumber(val, options) {
+  var opts = _isObject(options) ? options : {};
+
+  if (opts.isStrict === true) {
+    return _isNumber(val) && REGEX_ENUM.POSITIVE_NUMBER_REX.test(val);
+  }
+
+  return REGEX_ENUM.POSITIVE_NUMBER_REX.test(val);
+}
+
+module.exports = _isPositiveNumber;
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var _isNumber = __webpack_require__(2);
+var _isObject = __webpack_require__(0);
+var REGEX_ENUM = __webpack_require__(1);
+
+/**
+ * 校验参数 `val` 是否为负数
+ *
+ * 该接口存在两种模式, 即严格模式、非严格模式;
+ *
+ * 默认采用 `非严格模式`
+ *
+ * 若参数 `val` 为 number 类型, 并且是负数 则返回 true, 否则返回 false
+ * 若参数 `val` 为 string 类型, 并且通过验证为负数字符串, 则返回 true, 否则返回 false
+ * 若参数 `val` 不属于以上两种类型, 则直接返回 false
+ *
+ * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
+ *
+ * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
+ *
+ * e.g.
+ *
+ * 待校验参数 '-3'
+ *  > 若是严格模式, 则该参数值校验后, 返回 false
+ *  > 若是非严格模式, 则该参数值校验后, 返回 true
+ *
+ * @param   {*}       val              待校验的参数
+ * @param   {Object}  options          可选参数
+ * @param   {Boolean} options.isStrict 是否严格模式
+ * @return  {Boolean} 返回校验结果
+ * @version 0.0.7
+ * @since   0.0.4
+ */
+function _isNegativeNumber(val, options) {
+  var opts = _isObject(options) ? options : {};
+
+  if (opts.isStrict === true) {
+    return _isNumber(val) && REGEX_ENUM.NEGATIVE_NUMBER_REX.test(val);
+  }
+
+  return REGEX_ENUM.NEGATIVE_NUMBER_REX.test(val);
+}
+
+module.exports = _isNegativeNumber;
+
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -519,12 +688,12 @@ module.exports = _isArray;
 
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 var _isObject = __webpack_require__(0);
-var _isFunction = __webpack_require__(13);
+var _isFunction = __webpack_require__(16);
 
 /**
  * 校验参数 `val` 是否为纯粹的 object
@@ -556,7 +725,7 @@ module.exports = _isPlainObject;
 
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -583,12 +752,12 @@ module.exports = _isFunction;
 
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 var _isString = __webpack_require__(3);
-var LOCALE_ENUM = __webpack_require__(15);
+var LOCALE_ENUM = __webpack_require__(18);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
@@ -627,7 +796,7 @@ module.exports = _isMobile;
 
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports) {
 
 
@@ -640,12 +809,12 @@ module.exports = LOCALE_TYPE_ENUM;
 
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 var _isString = __webpack_require__(3);
-var LOCALE_ENUM = __webpack_require__(15);
+var LOCALE_ENUM = __webpack_require__(18);
 var REGEX_ENUM = __webpack_require__(1);
 
 /**
@@ -684,28 +853,28 @@ module.exports = _isTelephone;
 
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var _isUndefined = __webpack_require__(18);
-var _isNull = __webpack_require__(19);
-var _isNil = __webpack_require__(20);
+var _isUndefined = __webpack_require__(21);
+var _isNull = __webpack_require__(22);
+var _isNil = __webpack_require__(23);
 
-var _isBoolean = __webpack_require__(21);
+var _isBoolean = __webpack_require__(24);
 
-var _isNaN = __webpack_require__(7);
-var _isInfinity = __webpack_require__(8);
+var _isNaN = __webpack_require__(8);
+var _isInfinity = __webpack_require__(9);
 
 var _isNumber = __webpack_require__(2);
 var _isRealNumber = __webpack_require__(6);
-var _isNumeric = __webpack_require__(10);
+var _isNumeric = __webpack_require__(11);
 
-var _isZero = __webpack_require__(22);
-var _isUnZero = __webpack_require__(23);
+var _isZero = __webpack_require__(7);
+var _isUnZero = __webpack_require__(25);
 
-var _isPositiveNumber = __webpack_require__(24);
-var _isNegativeNumber = __webpack_require__(25);
+var _isPositiveNumber = __webpack_require__(12);
+var _isNegativeNumber = __webpack_require__(13);
 var _isUnPositiveNumber = __webpack_require__(26);
 var _isUnNegativeNumber = __webpack_require__(27);
 
@@ -717,20 +886,20 @@ var _isUnNegativeInteger = __webpack_require__(32);
 
 var _isString = __webpack_require__(3);
 var _isEmptyString = __webpack_require__(33);
-var _isUnEmptyString = __webpack_require__(9);
+var _isUnEmptyString = __webpack_require__(10);
 
-var _isArray = __webpack_require__(11);
+var _isArray = __webpack_require__(14);
 var _isEmptyArray = __webpack_require__(34);
 
 var _isObject = __webpack_require__(0);
-var _isPlainObject = __webpack_require__(12);
+var _isPlainObject = __webpack_require__(15);
 
 var _isJSON = __webpack_require__(35);
 
-var _isFunction = __webpack_require__(13);
+var _isFunction = __webpack_require__(16);
 
-var _isMobile = __webpack_require__(14);
-var _isTelephone = __webpack_require__(16);
+var _isMobile = __webpack_require__(17);
+var _isTelephone = __webpack_require__(19);
 var _isPhone = __webpack_require__(36);
 
 var _isEmail = __webpack_require__(37);
@@ -790,7 +959,7 @@ module.exports = {
 
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports) {
 
 
@@ -814,7 +983,7 @@ module.exports = _isUndefined;
 
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports) {
 
 
@@ -838,7 +1007,7 @@ module.exports = _isNull;
 
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports) {
 
 
@@ -863,7 +1032,7 @@ module.exports = _isNil;
 
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -890,60 +1059,11 @@ module.exports = _isBoolean;
 
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var _isObject = __webpack_require__(0);
-var _isRealNumber = __webpack_require__(6);
-
-/**
- * 校验参数 `val` 是否为零
- *
- * 该接口存在两种模式, 即严格模式、非严格模式;
- *
- * 默认采用 `非严格模式`
- *
- * 若参数 `val` 为 number 类型, 并且等于零, 则返回 true, 否则返回 false
- * 若参数 `val` 为 string 类型, 并且经过 ToNumber 转换后的数据等于零, 则返回 true, 否则返回 false
- * 若参数 `val` 不属于以上两种类型, 则直接返回 false
- *
- * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
- *
- * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
- *
- * e.g.
- *
- * 待校验参数 '0'
- *  > 若是严格模式, 则该参数值校验后, 返回 false
- *  > 若是非严格模式, 则该参数值校验后, 返回 true
- *
- * @param   {*}       val              待校验的参数
- * @param   {Object}  options          可选参数
- * @param   {Boolean} options.isStrict 是否严格模式
- * @return  {Boolean} 返回校验结果
- * @version 0.0.5
- * @since   0.0.4
- */
-function _isZero(val, options) {
-  var opts = _isObject(options) ? options : {};
-
-  if (opts.isStrict === true) {
-    return val === 0;
-  }
-
-  return _isRealNumber(val) && val - 0 === 0;
-}
-
-module.exports = _isZero;
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var _isNumeric = __webpack_require__(10);
+var _isNumeric = __webpack_require__(11);
 
 /**
  * 校验参数 `val` 是否为 number, 并且不等于零
@@ -981,113 +1101,12 @@ module.exports = _isUnZero;
 
 
 /***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var _isNumber = __webpack_require__(2);
-var _isObject = __webpack_require__(0);
-var REGEX_ENUM = __webpack_require__(1);
-
-/**
- * 校验参数 `val` 是否为 正数
- *
- * 该接口存在两种模式, 即严格模式、非严格模式
- *
- * 默认采用 `非严格模式`
- *
- * 若参数 `val` 为 number 类型, 并且是正数 则返回 true, 否则返回 false
- * 若参数 `val` 为 string 类型, 并且通过验证为正数字符串, 则返回 true, 否则返回 false
- * 若参数 `val` 不属于以上两种类型, 则直接返回 false
- *
- * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
- *
- * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
- *
- * e.g.
- *
- * 待校验参数 '3'
- *  > 若是严格模式, 则该参数值校验后, 返回 false
- *  > 若是非严格模式, 则该参数值校验后, 返回 true
- *
- * @param   {*}       val              待校验的参数
- * @param   {Object}  options          可选参数
- * @param   {Boolean} options.isStrict 是否严格模式
- * @return  {Boolean} 返回校验结果
- * @version 0.0.5
- * @since   0.0.4
- */
-function _isPositiveNumber(val, options) {
-  var opts = _isObject(options) ? options : {};
-
-  if (opts.isStrict === true) {
-    return _isNumber(val) && REGEX_ENUM.POSITIVE_NUMBER_REX.test(val);
-  }
-
-  return REGEX_ENUM.POSITIVE_NUMBER_REX.test(val);
-}
-
-module.exports = _isPositiveNumber;
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var _isNumber = __webpack_require__(2);
-var _isObject = __webpack_require__(0);
-var REGEX_ENUM = __webpack_require__(1);
-
-/**
- * 校验参数 `val` 是否为负数
- *
- * 该接口存在两种模式, 即严格模式、非严格模式;
- *
- * 默认采用 `非严格模式`
- *
- * 若参数 `val` 为 number 类型, 并且是负数 则返回 true, 否则返回 false
- * 若参数 `val` 为 string 类型, 并且通过验证为负数字符串, 则返回 true, 否则返回 false
- * 若参数 `val` 不属于以上两种类型, 则直接返回 false
- *
- * 若参数 `val` 的值为空字符串（''、'   '）, 则直接返回 false
- *
- * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则对于 string 类型直接返回 false
- *
- * e.g.
- *
- * 待校验参数 '-3'
- *  > 若是严格模式, 则该参数值校验后, 返回 false
- *  > 若是非严格模式, 则该参数值校验后, 返回 true
- *
- * @param   {*}       val              待校验的参数
- * @param   {Object}  options          可选参数
- * @param   {Boolean} options.isStrict 是否严格模式
- * @return  {Boolean} 返回校验结果
- * @version 0.0.5
- * @since   0.0.4
- */
-function _isNegativeNumber(val, options) {
-  var opts = _isObject(options) ? options : {};
-
-  if (opts.isStrict === true) {
-    return _isNumber(val) && REGEX_ENUM.NEGATIVE_NUMBER_REX.test(val);
-  }
-
-  return REGEX_ENUM.NEGATIVE_NUMBER_REX.test(val);
-}
-
-module.exports = _isNegativeNumber;
-
-
-/***/ }),
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var _isNumber = __webpack_require__(2);
-var _isObject = __webpack_require__(0);
-var REGEX_ENUM = __webpack_require__(1);
+var _isZero = __webpack_require__(7);
+var _isNegativeNumber = __webpack_require__(13);
 
 /**
  * 校验参数 `val` 是否为非正数, 即负数和零
@@ -1114,17 +1133,11 @@ var REGEX_ENUM = __webpack_require__(1);
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
  * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @version 0.0.7
  * @since   0.0.4
  */
 function _isUnPositiveNumber(val, options) {
-  var opts = _isObject(options) ? options : {};
-
-  if (opts.isStrict === true) {
-    return _isNumber(val) && REGEX_ENUM.UN_POSITIVE_NUMBER_REX.test(val);
-  }
-
-  return REGEX_ENUM.UN_POSITIVE_NUMBER_REX.test(val);
+  return _isNegativeNumber(val, options) || _isZero(val, options);
 }
 
 module.exports = _isUnPositiveNumber;
@@ -1135,9 +1148,8 @@ module.exports = _isUnPositiveNumber;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var _isNumber = __webpack_require__(2);
-var _isObject = __webpack_require__(0);
-var REGEX_ENUM = __webpack_require__(1);
+var _isZero = __webpack_require__(7);
+var _isPositiveNumber = __webpack_require__(12);
 
 /**
  * 校验参数 `val` 是否为非负数, 即正数和零
@@ -1164,17 +1176,11 @@ var REGEX_ENUM = __webpack_require__(1);
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
  * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @version 0.0.7
  * @since   0.0.4
  */
 function _isUnNegativeNumber(val, options) {
-  var opts = _isObject(options) ? options : {};
-
-  if (opts.isStrict === true) {
-    return _isNumber(val) && REGEX_ENUM.UN_NEGATIVE_NUMBER_REX.test(val);
-  }
-
-  return REGEX_ENUM.UN_NEGATIVE_NUMBER_REX.test(val);
+  return _isPositiveNumber(val, options) || _isZero(val, options);
 }
 
 module.exports = _isUnNegativeNumber;
@@ -1448,8 +1454,7 @@ var _isObject = __webpack_require__(0);
  * 若参数 `val` 不是 string, 则直接返回 false
  * 若参数 `val` 是 string, 并且为空，则返回 true, 否则, 返回 false
  *
- * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true,
- * 则会对参数 `val` 进行两端去除空白（空字符），之后在校验其是否为空字符串
+ * 若是参数 `options` 指定了严格模式, 即 options.isStrict = true, 则会对参数 `val` 进行两端去除空白（空字符），之后在校验其是否为空字符串
  *
  * e.g.
  *
@@ -1461,7 +1466,7 @@ var _isObject = __webpack_require__(0);
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
  * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @version 0.0.7
  * @since   0.0.5
  */
 function _isEmptyString(val, options) {
@@ -1471,7 +1476,15 @@ function _isEmptyString(val, options) {
     return false;
   }
 
-  return opts.isStrict === false ? val === '' : (val.trim() === '');
+  if (opts.isStrict === false) {
+    return val === '';
+  }
+
+  // @TODO
+  // 引用: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+  // String.prototype.trim, 在 ECMAScript 5.1 定义, 在 JavaScript 1.8.1 实现
+  // return val.replace(REGEX_ENUM.LEFT_WHITE_SPACE_REX, '').replace(REGEX_ENUM.RIGHT_WHITE_SPACE_REX, '') === '';
+  return val.trim() === '';
 }
 
 module.exports = _isEmptyString;
@@ -1482,7 +1495,7 @@ module.exports = _isEmptyString;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var _isArray = __webpack_require__(11);
+var _isArray = __webpack_require__(14);
 
 /**
  * 校验参数 `val` 是否为空数组
@@ -1512,7 +1525,7 @@ module.exports = _isEmptyArray;
 
 
 var _isString = __webpack_require__(3);
-var _isPlainObject = __webpack_require__(12);
+var _isPlainObject = __webpack_require__(15);
 
 /**
  * 校验参数 `val` 是否为 JSON 对象
@@ -1530,6 +1543,9 @@ function _isJSON(val) {
   }
 
   try {
+    // @TODO
+    // 引用: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+    // JSON support, 在 ECMAScript 5.1 定义, 在 JavaScript 1.7 实现
     var jsonObj = JSON.parse(val);
 
     return _isPlainObject(jsonObj);
@@ -1546,8 +1562,8 @@ module.exports = _isJSON;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var _isMobile = __webpack_require__(14);
-var _isTelephone = __webpack_require__(16);
+var _isMobile = __webpack_require__(17);
+var _isTelephone = __webpack_require__(19);
 
 /**
  * 校验参数 `val` 是否为手机号码/座机号码

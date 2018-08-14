@@ -52,6 +52,16 @@ describe('isRealNumber', function () {
     isRealNumber(Number.NEGATIVE_INFINITY).should.equal(true);
   });
 
+  // MAX_SAFE_INTEGER
+  it(`isRealNumber(Number.MAX_SAFE_INTEGER) === true`, function () {
+    isRealNumber(Number.MAX_SAFE_INTEGER).should.equal(true);
+  });
+
+  // MIN_SAFE_INTEGER
+  it(`isRealNumber(Number.MIN_SAFE_INTEGER) === true`, function () {
+    isRealNumber(Number.MIN_SAFE_INTEGER).should.equal(true);
+  });
+
   // ''
   it(`isRealNumber('') === false`, function () {
     isRealNumber('').should.equal(false);

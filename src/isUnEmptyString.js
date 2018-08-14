@@ -39,7 +39,8 @@ function _isUnEmptyString(val, options) {
     return val !== '';
   }
 
-  // TODO, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+  // @TODO
+  // 引用: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
   // String.prototype.trim, 在 ECMAScript 5.1 定义, 在 JavaScript 1.8.1 实现
   // return val.replace(REGEX_ENUM.LEFT_WHITE_SPACE_REX, '').replace(REGEX_ENUM.RIGHT_WHITE_SPACE_REX, '') !== '';
   return val.trim() !== '';

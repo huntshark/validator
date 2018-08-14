@@ -491,4 +491,24 @@ describe('isNegativeNumber', function () {
   it(`isNegativeNumber(-Infinity) === false`, function () {
     isNegativeNumber(Number.NEGATIVE_INFINITY).should.equal(false);
   });
+
+  // Object(-3.56)
+  it(`isNegativeNumber(Object(-3.56)) === true`, function () {
+    isNegativeNumber(Object(-3.56)).should.equal(true);
+  });
+
+  // Object('-3.56')
+  it(`isNegativeNumber(Object('-3.56')) === true`, function () {
+    isNegativeNumber(Object('-3.56')).should.equal(true);
+  });
+
+  // Object(-3.56)
+  it(`isNegativeNumber(Object(-3.56), {isStrict: true}) === true`, function () {
+    isNegativeNumber(Object(-3.56), {isStrict: true}).should.equal(true);
+  });
+
+  // Object('-3.56')
+  it(`isNegativeNumber(Object('-3.56'), {isStrict: true}) === false`, function () {
+    isNegativeNumber(Object('-3.56'), {isStrict: true}).should.equal(false);
+  });
 });

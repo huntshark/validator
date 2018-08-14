@@ -1,18 +1,18 @@
 {
   "name": "jxm-validator",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A modern JavaScript verification toolkit library",
   "main": "validator.js",
   "scripts": {
-    "build": "npm run jxmEslint && npm run jxmTest && npm run jxmBuild",
-    "build:uglify": "npm run jxmEslint && npm run jxmTest && npm run jxmUglify",
-    "jxmBuild": "webpack --config webpack.config.js",
-    "jxmUglify": "webpack --config webpack.config.uglify.js",
-    "jxmTest": "mocha ./test/*.test.js",
-    "jxmCoverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
-    "jxmCoverage:build": "istanbul cover _mocha -- -R spec --timeout 5000 --recursive",
-    "jxmCoverage:check": "istanbul check-coverage",
-    "jxmEslint": "eslint --config .eslintrc.yaml * --ignore-path .eslintignore --quiet"
+    "build": "npm run eslint && npm run test && npm run webpack:pack",
+    "build:uglify": "npm run eslint && npm run test && npm run webpack:uglify",
+    "webpack:pack": "webpack --config webpack.config.js",
+    "webpack:uglify": "webpack --config webpack.config.uglify.js",
+    "eslint": "eslint . --quiet",
+    "test": "mocha ./test/**/*.test.js",
+    "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
+    "test:coverage:build": "istanbul cover _mocha -- -R spec --timeout 5000 --recursive",
+    "test:coverage:check": "istanbul check-coverage"
   },
   "repository": {
     "type": "git",

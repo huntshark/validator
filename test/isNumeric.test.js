@@ -32,6 +32,11 @@ describe('isNumeric', function () {
     isNumeric('3a').should.equal(false);
   });
 
+  // '3a'
+  it(`isNumeric('3a', {isStrict: true}) === false`, function () {
+    isNumeric('3a', {isStrict: true}).should.equal(false);
+  });
+
   // NaN
   it(`isNumeric(NaN) === false`, function () {
     isNumeric(NaN).should.equal(false);
@@ -45,6 +50,16 @@ describe('isNumeric', function () {
   // -Infinity
   it(`isNumeric(-Infinity) === false`, function () {
     isNumeric(Number.NEGATIVE_INFINITY).should.equal(false);
+  });
+
+  // MAX_SAFE_INTEGER
+  it(`isNumeric(Number.MAX_SAFE_INTEGER) === true`, function () {
+    isNumeric(Number.MAX_SAFE_INTEGER).should.equal(true);
+  });
+
+  // MIN_SAFE_INTEGER
+  it(`isNumeric(Number.MIN_SAFE_INTEGER) === true`, function () {
+    isNumeric(Number.MIN_SAFE_INTEGER).should.equal(true);
   });
 
   // ''

@@ -491,4 +491,24 @@ describe('isUnNegativeNumber', function () {
   it(`isUnNegativeNumber(-Infinity) === false`, function () {
     isUnNegativeNumber(Number.NEGATIVE_INFINITY).should.equal(false);
   });
+
+  // Object(3.56)
+  it(`isUnNegativeNumber(Object(3.56)) === true`, function () {
+    isUnNegativeNumber(Object(3.56)).should.equal(true);
+  });
+
+  // Object('3.56')
+  it(`isUnNegativeNumber(Object('3.56')) === true`, function () {
+    isUnNegativeNumber(Object('3.56')).should.equal(true);
+  });
+
+  // Object(3.56)
+  it(`isUnNegativeNumber(Object(3.56), {isStrict: true}) === true`, function () {
+    isUnNegativeNumber(Object(3.56), {isStrict: true}).should.equal(true);
+  });
+
+  // Object('3.56')
+  it(`isUnNegativeNumber(Object('3.56'), {isStrict: true}) === false`, function () {
+    isUnNegativeNumber(Object('3.56'), {isStrict: true}).should.equal(false);
+  });
 });

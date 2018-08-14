@@ -266,4 +266,44 @@ describe('isNegativeInteger', function () {
   it(`isNegativeInteger(-Infinity) === false`, function () {
     isNegativeInteger(Number.NEGATIVE_INFINITY).should.equal(false);
   });
+
+  // Object(3)
+  it(`isNegativeInteger(Object(3)) === false`, function () {
+    isNegativeInteger(Object(3)).should.equal(false);
+  });
+
+  // Object('3')
+  it(`isNegativeInteger(Object('3')) === false`, function () {
+    isNegativeInteger(Object('3')).should.equal(false);
+  });
+
+  // Object(3)
+  it(`isNegativeInteger(Object(3), {isStrict: true}) === false`, function () {
+    isNegativeInteger(Object(3), {isStrict: true}).should.equal(false);
+  });
+
+  // Object('3')
+  it(`isNegativeInteger(Object('3'), {isStrict: true}) === false`, function () {
+    isNegativeInteger(Object('3'), {isStrict: true}).should.equal(false);
+  });
+
+  // Object(-3)
+  it(`isNegativeInteger(Object(-3)) === true`, function () {
+    isNegativeInteger(Object(-3)).should.equal(true);
+  });
+
+  // Object('-3')
+  it(`isNegativeInteger(Object('-3')) === true`, function () {
+    isNegativeInteger(Object('-3')).should.equal(true);
+  });
+
+  // Object(-3)
+  it(`isNegativeInteger(Object(-3), {isStrict: true}) === true`, function () {
+    isNegativeInteger(Object(-3), {isStrict: true}).should.equal(true);
+  });
+
+  // Object('-3')
+  it(`isNegativeInteger(Object('-3'), {isStrict: true}) === false`, function () {
+    isNegativeInteger(Object('-3'), {isStrict: true}).should.equal(false);
+  });
 });

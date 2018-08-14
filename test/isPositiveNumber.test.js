@@ -491,4 +491,24 @@ describe('isPositiveNumber', function () {
   it(`isPositiveNumber(-Infinity) === false`, function () {
     isPositiveNumber(Number.NEGATIVE_INFINITY).should.equal(false);
   });
+
+  // Object(3.56)
+  it(`isPositiveNumber(Object(3.56)) === true`, function () {
+    isPositiveNumber(Object(3.56)).should.equal(true);
+  });
+
+  // Object('3.56')
+  it(`isPositiveNumber(Object('3.56')) === true`, function () {
+    isPositiveNumber(Object('3.56')).should.equal(true);
+  });
+
+  // Object(3.56)
+  it(`isPositiveNumber(Object(3.56), {isStrict: true}) === true`, function () {
+    isPositiveNumber(Object(3.56), {isStrict: true}).should.equal(true);
+  });
+
+  // Object('3.56')
+  it(`isPositiveNumber(Object('3.56'), {isStrict: true}) === false`, function () {
+    isPositiveNumber(Object('3.56'), {isStrict: true}).should.equal(false);
+  });
 });

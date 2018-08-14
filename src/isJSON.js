@@ -18,7 +18,8 @@ function _isJSON(val) {
   }
 
   try {
-    // TODO, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+    // @TODO
+    // 引用: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
     // JSON support, 在 ECMAScript 5.1 定义, 在 JavaScript 1.7 实现
     var jsonObj = JSON.parse(val);
 
