@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isNaN test', function () {
+describe('isNaN', function () {
   // NaN
   it(`isNaN(NaN) === true`, function () {
     _isNaN(NaN).should.equal(true);

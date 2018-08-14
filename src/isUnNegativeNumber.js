@@ -1,7 +1,6 @@
 
-var _isNumber = require('./isNumber');
-var _isObject = require('./isObject');
-var REGEX_ENUM = require('./internal/enum/regexEnum');
+var _isZero = require('./isZero');
+var _isPositiveNumber = require('./isPositiveNumber');
 
 /**
  * 校验参数 `val` 是否为非负数, 即正数和零
@@ -28,17 +27,11 @@ var REGEX_ENUM = require('./internal/enum/regexEnum');
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
  * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @version 0.0.7
  * @since   0.0.4
  */
 function _isUnNegativeNumber(val, options) {
-  var opts = _isObject(options) ? options : {};
-
-  if (opts.isStrict === true) {
-    return _isNumber(val) && REGEX_ENUM.UN_NEGATIVE_NUMBER_REX.test(val);
-  }
-
-  return REGEX_ENUM.UN_NEGATIVE_NUMBER_REX.test(val);
+  return _isPositiveNumber(val, options) || _isZero(val, options);
 }
 
 module.exports = _isUnNegativeNumber;

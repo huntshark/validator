@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isUnZero test', function () {
+describe('isUnZero', function () {
   // 3
   it(`isUnZero(3) === true`, function () {
     isUnZero(3).should.equal(true);
@@ -23,6 +22,16 @@ describe('isUnZero test', function () {
     isUnZero('3').should.equal(true);
   });
 
+  // 3
+  it(`isUnZero(3, {isStrict: true}) === true`, function () {
+    isUnZero(3, {isStrict: true}).should.equal(true);
+  });
+
+  // -3
+  it(`isUnZero(-3, {isStrict: true}) === true`, function () {
+    isUnZero(-3, {isStrict: true}).should.equal(true);
+  });
+
   // '3'
   it(`isUnZero('3', {isStrict: true}) === false`, function () {
     isUnZero('3', {isStrict: true}).should.equal(false);
@@ -34,6 +43,10 @@ describe('isUnZero test', function () {
 
   it(`isUnZero('0') === false`, function () {
     isUnZero('0').should.equal(false);
+  });
+
+  it(`isUnZero(0, {isStrict: true}) === false`, function () {
+    isUnZero(0, {isStrict: true}).should.equal(false);
   });
 
   it(`isUnZero('0', {isStrict: true}) === false`, function () {
@@ -75,29 +88,24 @@ describe('isUnZero test', function () {
     isUnZero(undefined).should.equal(false);
   });
 
-  // Number(0)
-  it(`isUnZero(Number(0)) === false`, function () {
-    isUnZero(Number(0)).should.equal(false);
+  // Object(0)
+  it(`isUnZero(Object(0)) === false`, function () {
+    isUnZero(Object(0)).should.equal(false);
   });
 
-  // Number(3)
-  it(`isUnZero(Number(3)) === true`, function () {
-    isUnZero(Number(3)).should.equal(true);
+  // Object('0')
+  it(`isUnZero(Object('0')) === false`, function () {
+    isUnZero(Object('0')).should.equal(false);
   });
 
-  // new Number(0)
-  it(`isUnZero(new Number(0)) === false`, function () {
-    isUnZero(new Number(0)).should.equal(false);
+  // Object(0)
+  it(`isUnZero(Object(0), {isStrict: true}) === false`, function () {
+    isUnZero(Object(0), {isStrict: true}).should.equal(false);
   });
 
-  // new Number('0')
-  it(`isUnZero(new Number(0)) === false`, function () {
-    isUnZero(new Number('0')).should.equal(false);
-  });
-
-  // new Number(3)
-  it(`isUnZero(new Number(3)) === true`, function () {
-    isUnZero(new Number(3)).should.equal(true);
+  // Object('0')
+  it(`isUnZero(Object('0'), {isStrict: true}) === false`, function () {
+    isUnZero(Object('0'), {isStrict: true}).should.equal(false);
   });
 
   // Object(3)
@@ -108,6 +116,11 @@ describe('isUnZero test', function () {
   // Object('3')
   it(`isUnZero(Object('3')) === true`, function () {
     isUnZero(Object('3')).should.equal(true);
+  });
+
+  // Object(3)
+  it(`isUnZero(Object(3), {isStrict: true}) === false`, function () {
+    isUnZero(Object(3), {isStrict: true}).should.equal(true);
   });
 
   // Object('3')

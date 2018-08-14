@@ -36,30 +36,28 @@
 #### 示例：
 
 ```javascript
-jxmValidator.isUnPositiveInteger(3); // => false
-jxmValidator.isUnPositiveInteger('3'); // => false
-jxmValidator.isUnPositiveInteger(3, {isStrict: true}); // => false
-jxmValidator.isUnPositiveInteger('3', {isStrict: true}); // => false
+jxmValidator.isUnPositiveInteger(-.3); // => false
+jxmValidator.isUnPositiveInteger(-3); // => true
+jxmValidator.isUnPositiveInteger(-3.3); // => false
+jxmValidator.isUnPositiveInteger('-.3'); // => false
+jxmValidator.isUnPositiveInteger('-3'); // => true
+jxmValidator.isUnPositiveInteger('-3.3'); // => false
+jxmValidator.isUnPositiveInteger(-.3, {isStrict: true}); // => false
+jxmValidator.isUnPositiveInteger(-3, {isStrict: true}); // => true
+jxmValidator.isUnPositiveInteger(-3.3, {isStrict: true}); // => false
+jxmValidator.isUnPositiveInteger('-.3', {isStrict: true}); // => false
+jxmValidator.isUnPositiveInteger('-3', {isStrict: true}); // => false
+jxmValidator.isUnPositiveInteger('-3.3', {isStrict: true}); // => false
 
 jxmValidator.isUnPositiveInteger(0); // => true
 jxmValidator.isUnPositiveInteger('0'); // => true
 jxmValidator.isUnPositiveInteger(0, {isStrict: true}); // => true
 jxmValidator.isUnPositiveInteger('0', {isStrict: true}); // => false
 
-jxmValidator.isUnPositiveInteger(-3); // => true
-jxmValidator.isUnPositiveInteger('-3'); // => true
-jxmValidator.isUnPositiveInteger(-3, {isStrict: true}); // => true
-jxmValidator.isUnPositiveInteger('-3', {isStrict: true}); // => false
-
-jxmValidator.isUnPositiveInteger(3.3); // => false
-jxmValidator.isUnPositiveInteger('3.3'); // => false
-jxmValidator.isUnPositiveInteger(3.3, {isStrict: true}); // => false
-jxmValidator.isUnPositiveInteger('3.3', {isStrict: true}); // => false
-
-jxmValidator.isUnPositiveInteger(-3.3); // => false
-jxmValidator.isUnPositiveInteger('-3.3'); // => false
-jxmValidator.isUnPositiveInteger(-3.3, {isStrict: true}); // => false
-jxmValidator.isUnPositiveInteger('-3.3', {isStrict: true}); // => false
+jxmValidator.isUnPositiveInteger(3); // => false
+jxmValidator.isUnPositiveInteger('3'); // => false
+jxmValidator.isUnPositiveInteger(3, {isStrict: true}); // => false
+jxmValidator.isUnPositiveInteger('3', {isStrict: true}); // => false
 
 jxmValidator.isUnPositiveInteger(''); // => false
 jxmValidator.isUnPositiveInteger('   '); // => false

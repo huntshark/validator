@@ -18,6 +18,7 @@
 ```javascript
 jxmValidator.isUndefined(undefined); // => true
 jxmValidator.isUndefined(null); // => false
+
 jxmValidator.isUndefined(0); // => false
 jxmValidator.isUndefined(''); // => false
 jxmValidator.isUndefined('undefined'); // => false

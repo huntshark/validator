@@ -16,7 +16,6 @@
 #### 示例：
 
 ```javascript
-// boolean
 jxmValidator.isBoolean(true); // => true
 jxmValidator.isBoolean(false); // => true
 
@@ -24,9 +23,5 @@ jxmValidator.isBoolean(0); // => false
 jxmValidator.isBoolean(''); // => false
 jxmValidator.isBoolean(null); // => false
 jxmValidator.isBoolean(undefined); // => false
-
-// boolean 包装对象
-jxmValidator.isBoolean(Boolean(true)); // => true
-jxmValidator.isBoolean(new Boolean(true)); // => true
 jxmValidator.isBoolean({}); // => false
 ```

@@ -16,7 +16,6 @@
 #### 示例：
 
 ```javascript
-// string
 jxmValidator.isString(''); // => true
 jxmValidator.isString('   '); // => true
 
@@ -27,11 +26,8 @@ jxmValidator.isString(true); // => false
 jxmValidator.isString(null); // => false
 jxmValidator.isString(undefined); // => false
 
-// string 包装对象
-jxmValidator.isString(String(3)); // => true
-jxmValidator.isString(new String(3)); // => true
-
 jxmValidator.isString({}); // => false
-jxmValidator.isString(Object('3')); // => true
+
 jxmValidator.isString(Object(3)); // => false
+jxmValidator.isString(Object('3')); // => true
 ```

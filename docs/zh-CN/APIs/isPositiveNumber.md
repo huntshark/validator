@@ -36,10 +36,18 @@
 #### 示例：
 
 ```javascript
+jxmValidator.isPositiveNumber(.3); // => true
 jxmValidator.isPositiveNumber(3); // => true
+jxmValidator.isPositiveNumber(3.5); // => true
+jxmValidator.isPositiveNumber('.3'); // => true
 jxmValidator.isPositiveNumber('3'); // => true
+jxmValidator.isPositiveNumber('3.5'); // => true
+jxmValidator.isPositiveNumber(.3, {isStrict: true}); // => true
 jxmValidator.isPositiveNumber(3, {isStrict: true}); // => true
+jxmValidator.isPositiveNumber(3.5, {isStrict: true}); // => true
+jxmValidator.isPositiveNumber('.3', {isStrict: true}); // => false
 jxmValidator.isPositiveNumber('3', {isStrict: true}); // => false
+jxmValidator.isPositiveNumber('3.5', {isStrict: true}); // => false
 
 jxmValidator.isPositiveNumber(0); // => false
 jxmValidator.isPositiveNumber('0'); // => false
@@ -49,7 +57,7 @@ jxmValidator.isPositiveNumber('0', {isStrict: true}); // => false
 jxmValidator.isPositiveNumber(-3); // => false
 jxmValidator.isPositiveNumber('-3'); // => false
 jxmValidator.isPositiveNumber(-3, {isStrict: true}); // => false
-jxmValidator.isPositiveNumber('3', {isStrict: true}); // => false
+jxmValidator.isPositiveNumber('-3', {isStrict: true}); // => false
 
 jxmValidator.isPositiveNumber(''); // => false
 jxmValidator.isPositiveNumber('   '); // => false

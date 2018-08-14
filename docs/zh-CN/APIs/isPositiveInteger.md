@@ -36,10 +36,18 @@
 #### 示例：
 
 ```javascript
+jxmValidator.isPositiveInteger(.3); // => false
 jxmValidator.isPositiveInteger(3); // => true
+jxmValidator.isPositiveInteger(3.3); // => false
+jxmValidator.isPositiveInteger('.3'); // => false
 jxmValidator.isPositiveInteger('3'); // => true
+jxmValidator.isPositiveInteger('3.3'); // => false
+jxmValidator.isPositiveInteger(.3, {isStrict: true}); // => false
 jxmValidator.isPositiveInteger(3, {isStrict: true}); // => true
+jxmValidator.isPositiveInteger(3.3, {isStrict: true}); // => false
+jxmValidator.isPositiveInteger('.3', {isStrict: true}); // => false
 jxmValidator.isPositiveInteger('3', {isStrict: true}); // => false
+jxmValidator.isPositiveInteger('3.3', {isStrict: true}); // => false
 
 jxmValidator.isPositiveInteger(0); // => false
 jxmValidator.isPositiveInteger('0'); // => false
@@ -50,16 +58,6 @@ jxmValidator.isPositiveInteger(-3); // => false
 jxmValidator.isPositiveInteger('-3'); // => false
 jxmValidator.isPositiveInteger(-3, {isStrict: true}); // => false
 jxmValidator.isPositiveInteger('-3', {isStrict: true}); // => false
-
-jxmValidator.isPositiveInteger(3.3); // => false
-jxmValidator.isPositiveInteger('3.3'); // => false
-jxmValidator.isPositiveInteger(3.3, {isStrict: true}); // => false
-jxmValidator.isPositiveInteger('3.3', {isStrict: true}); // => false
-
-jxmValidator.isPositiveInteger(-3.3); // => false
-jxmValidator.isPositiveInteger('-3.3'); // => false
-jxmValidator.isPositiveInteger(-3.3, {isStrict: true}); // => false
-jxmValidator.isPositiveInteger('-3.3', {isStrict: true}); // => false
 
 jxmValidator.isPositiveInteger(''); // => false
 jxmValidator.isPositiveInteger('   '); // => false

@@ -1,5 +1,5 @@
 
-// Js数据类型
+// Js 数据类型
 var DATA_TYPE_ENUM = {};
 
 // 存储类型

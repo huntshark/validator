@@ -21,9 +21,9 @@ jxmValidator.isPlainObject([]); // => false
 jxmValidator.isPlainObject(parseInt); // => false
 jxmValidator.isPlainObject(new Date()); // => false
 
-jxmValidator.isPlainObject(Object({})); // => true
 jxmValidator.isPlainObject(Object('3'); // => false
-jxmValidator.isPlainObject(new Object('3'); // => false
+jxmValidator.isPlainObject(Object([])); // => false
+jxmValidator.isPlainObject(Object({})); // => true
 
 jxmValidator.isPlainObject(null); // => false
 jxmValidator.isPlainObject(Object.create(null)); // => true

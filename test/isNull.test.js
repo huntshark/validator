@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isNull test', function () {
+describe('isNull', function () {
   // null
   it(`isNull(null) === true`, function () {
     isNull(null).should.equal(true);

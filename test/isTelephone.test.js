@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isTelephone test', function () {
+describe('isTelephone', function () {
   // '7632614'
   it(`isTelephone('7632614') === true`, function () {
     isTelephone('7632614').should.equal(true);

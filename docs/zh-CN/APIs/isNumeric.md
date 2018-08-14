@@ -51,10 +51,7 @@ jxmValidator.isNumeric('   '); // => false
 jxmValidator.isNumeric(null); // => false
 jxmValidator.isNumeric(undefined); // => false
 
-jxmValidator.isNumeric(Number(3)); // => true
-jxmValidator.isNumeric(new Number(3)); // => true
 jxmValidator.isNumeric({}); // => false
-
 jxmValidator.isNumeric(Object(3)); // => true
 jxmValidator.isNumeric(Object('3')); // => true
 jxmValidator.isNumeric(Object('3', {isStrict: true})); // => false

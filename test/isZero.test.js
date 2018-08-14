@@ -6,26 +6,83 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isZero test', function () {
+describe('isZero', function () {
   // 3
   it(`isZero(3) === false`, function () {
     isZero(3).should.equal(false);
   });
 
   // -3
-  it(`isZero(3) === false`, function () {
-    isZero(3).should.equal(false);
+  it(`isZero(-3) === false`, function () {
+    isZero(-3).should.equal(false);
   });
 
+  // '3'
+  it(`isZero('3') === false`, function () {
+    isZero('3').should.equal(false);
+  });
+
+  // '-3'
+  it(`isZero('-3') === false`, function () {
+    isZero('-3').should.equal(false);
+  });
+
+  // 3
+  it(`isZero(3, {isStrict: true}) === false`, function () {
+    isZero(3, {isStrict: true}).should.equal(false);
+  });
+
+  // -3
+  it(`isZero(-3, {isStrict: true}) === false`, function () {
+    isZero(-3, {isStrict: true}).should.equal(false);
+  });
+
+  // '3'
+  it(`isZero('3', {isStrict: true}) === false`, function () {
+    isZero('3', {isStrict: true}).should.equal(false);
+  });
+
+  // '-3'
+  it(`isZero('-3', {isStrict: true}) === false`, function () {
+    isZero('-3', {isStrict: true}).should.equal(false);
+  });
+
+  // 0
   it(`isZero(0) === true`, function () {
     isZero(0).should.equal(true);
   });
 
+  // '0'
   it(`isZero('0') === true`, function () {
     isZero('0').should.equal(true);
   });
 
+  // '0.0'
+  it(`isZero('0.0') === true`, function () {
+    isZero('0.0').should.equal(true);
+  });
+
+  // '0.'
+  it(`isZero('0.') === true`, function () {
+    isZero('0.').should.equal(true);
+  });
+
+  // '.0'
+  it(`isZero('.0') === true`, function () {
+    isZero('.0').should.equal(true);
+  });
+
+  // '.'
+  it(`isZero('.') === false`, function () {
+    isZero('.').should.equal(false);
+  });
+
+  // 0
+  it(`isZero(0, {isStrict: true}) === true`, function () {
+    isZero(0, {isStrict: true}).should.equal(true);
+  });
+
+  // '0'
   it(`isZero('0', {isStrict: true}) === false`, function () {
     isZero('0', {isStrict: true}).should.equal(false);
   });
@@ -65,21 +122,6 @@ describe('isZero test', function () {
     isZero(undefined).should.equal(false);
   });
 
-  // Number(0)
-  it(`isZero(Number(0)) === true`, function () {
-    isZero(Number(0)).should.equal(true);
-  });
-
-  // new Number(0)
-  it(`isZero(new Number(0)) === true`, function () {
-    isZero(new Number(0)).should.equal(true);
-  });
-
-  // new Number('0')
-  it(`isZero(new Number(0)) === true`, function () {
-    isZero(new Number('0')).should.equal(true);
-  });
-
   // Object(0)
   it(`isZero(Object(0)) === true`, function () {
     isZero(Object(0)).should.equal(true);
@@ -88,6 +130,11 @@ describe('isZero test', function () {
   // Object('0')
   it(`isZero(Object('0')) === true`, function () {
     isZero(Object('0')).should.equal(true);
+  });
+
+  // Object(0)
+  it(`isZero(Object(0), {isStrict: true}) === true`, function () {
+    isZero(Object(0), {isStrict: true}).should.equal(true);
   });
 
   // Object('0')

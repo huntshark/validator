@@ -6,11 +6,30 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isUnPositiveInteger test', function () {
+describe('isUnPositiveInteger', function () {
+  // .3
+  it(`isUnPositiveInteger(.3) === false`, function () {
+    isUnPositiveInteger(.3).should.equal(false);
+  });
+
   // 3
   it(`isUnPositiveInteger(3) === false`, function () {
     isUnPositiveInteger(3).should.equal(false);
+  });
+
+  // 3.
+  it(`isUnPositiveInteger(3.) === false`, function () {
+    isUnPositiveInteger(3.).should.equal(false);
+  });
+
+  // 3.3
+  it(`isUnPositiveInteger(3.3) === false`, function () {
+    isUnPositiveInteger(3.3).should.equal(false);
+  });
+
+  // '.3'
+  it(`isUnPositiveInteger('.3') === false`, function () {
+    isUnPositiveInteger('.3').should.equal(false);
   });
 
   // '3'
@@ -18,9 +37,39 @@ describe('isUnPositiveInteger test', function () {
     isUnPositiveInteger('3').should.equal(false);
   });
 
+  // '3.'
+  it(`isUnPositiveInteger('3.') === false`, function () {
+    isUnPositiveInteger('3.').should.equal(false);
+  });
+
+  // '3.3'
+  it(`isUnPositiveInteger('3.3') === false`, function () {
+    isUnPositiveInteger('3.3  ').should.equal(false);
+  });
+
+  // .3
+  it(`isUnPositiveInteger(.3, {isStrict: true}) === false`, function () {
+    isUnPositiveInteger(.3, {isStrict: true}).should.equal(false);
+  });
+
   // 3
   it(`isUnPositiveInteger(3, {isStrict: true}) === false`, function () {
     isUnPositiveInteger(3, {isStrict: true}).should.equal(false);
+  });
+
+  // 3.
+  it(`isUnPositiveInteger(3., {isStrict: true}) === false`, function () {
+    isUnPositiveInteger(3., {isStrict: true}).should.equal(false);
+  });
+
+  // 3.3
+  it(`isUnPositiveInteger(3.3, {isStrict: true}) === false`, function () {
+    isUnPositiveInteger(3.3, {isStrict: true}).should.equal(false);
+  });
+
+  // '.3'
+  it(`isUnPositiveInteger('.3', {isStrict: true}) === false`, function () {
+    isUnPositiveInteger('.3', {isStrict: true}).should.equal(false);
   });
 
   // '3'
@@ -28,14 +77,59 @@ describe('isUnPositiveInteger test', function () {
     isUnPositiveInteger('3', {isStrict: true}).should.equal(false);
   });
 
+  // '3.'
+  it(`isUnPositiveInteger('3.', {isStrict: true}) === false`, function () {
+    isUnPositiveInteger('3.', {isStrict: true}).should.equal(false);
+  });
+
+  // '3.3'
+  it(`isUnPositiveInteger('3.3', {isStrict: true}) === false`, function () {
+    isUnPositiveInteger('3.3', {isStrict: true}).should.equal(false);
+  });
+
   // 0
   it(`isUnPositiveInteger(0) === true`, function () {
     isUnPositiveInteger(0).should.equal(true);
   });
 
+  // 0.
+  it(`isUnPositiveInteger(0.) === true`, function () {
+    isUnPositiveInteger(0.).should.equal(true);
+  });
+
+  // .0
+  it(`isUnPositiveInteger(.0) === true`, function () {
+    isUnPositiveInteger(.0).should.equal(true);
+  });
+
+  // 0.0
+  it(`isUnPositiveInteger(0.0) === true`, function () {
+    isUnPositiveInteger(0.0).should.equal(true);
+  });
+
   // '0'
   it(`isUnPositiveInteger('0') === true`, function () {
     isUnPositiveInteger('0').should.equal(true);
+  });
+
+  // '0.'
+  it(`isUnPositiveInteger('0.') === false`, function () {
+    isUnPositiveInteger('0.').should.equal(false);
+  });
+
+  // '.0'
+  it(`isUnPositiveInteger('.0') === false`, function () {
+    isUnPositiveInteger('.0').should.equal(false);
+  });
+
+  // '0.0'
+  it(`isUnPositiveInteger('0.0') === false`, function () {
+    isUnPositiveInteger('0.0').should.equal(false);
+  });
+
+  // '.'
+  it(`isUnPositiveInteger('.') === false`, function () {
+    isUnPositiveInteger('.').should.equal(false);
   });
 
   // 0
@@ -48,44 +142,19 @@ describe('isUnPositiveInteger test', function () {
     isUnPositiveInteger('0', {isStrict: true}).should.equal(false);
   });
 
+  // -.3
+  it(`isUnPositiveInteger(-.3) === false`, function () {
+    isUnPositiveInteger(-.3).should.equal(false);
+  });
+
   // -3
   it(`isUnPositiveInteger(-3) === true`, function () {
     isUnPositiveInteger(-3).should.equal(true);
   });
 
-  // '-3'
-  it(`isUnPositiveInteger('-3') === true`, function () {
-    isUnPositiveInteger('-3').should.equal(true);
-  });
-
-  // -3
-  it(`isUnPositiveInteger(-3, {isStrict: true}) === true`, function () {
-    isUnPositiveInteger(-3, {isStrict: true}).should.equal(true);
-  });
-
-  // '-3'
-  it(`isUnPositiveInteger('-3', {isStrict: true}) === false`, function () {
-    isUnPositiveInteger('-3', {isStrict: true}).should.equal(false);
-  });
-
-  // 3.3
-  it(`isUnPositiveInteger(3.3) === false`, function () {
-    isUnPositiveInteger(3.3).should.equal(false);
-  });
-
-  // '3.3'
-  it(`isUnPositiveInteger('3.3') === false`, function () {
-    isUnPositiveInteger('3.3').should.equal(false);
-  });
-
-  // 3.3
-  it(`isUnPositiveInteger(3.3, {isStrict: true}) === false`, function () {
-    isUnPositiveInteger(3.3, {isStrict: true}).should.equal(false);
-  });
-
-  // '3.3'
-  it(`isUnPositiveInteger('3.3', {isStrict: true}) === false`, function () {
-    isUnPositiveInteger('3.3', {isStrict: true}).should.equal(false);
+  // -3.
+  it(`isUnPositiveInteger(-3.) === true`, function () {
+    isUnPositiveInteger(-3.).should.equal(true);
   });
 
   // -3.3
@@ -93,9 +162,49 @@ describe('isUnPositiveInteger test', function () {
     isUnPositiveInteger(-3.3).should.equal(false);
   });
 
+  // '-.3'
+  it(`isUnPositiveInteger('-.3') === false`, function () {
+    isUnPositiveInteger('-.3').should.equal(false);
+  });
+
+  // '-3'
+  it(`isUnPositiveInteger('-3') === true`, function () {
+    isUnPositiveInteger('-3').should.equal(true);
+  });
+
+  // '-3.'
+  it(`isUnPositiveInteger('-3.') === false`, function () {
+    isUnPositiveInteger('-3.').should.equal(false);
+  });
+
   // '-3.3'
   it(`isUnPositiveInteger('-3.3') === false`, function () {
     isUnPositiveInteger('-3.3').should.equal(false);
+  });
+
+  // '--3'
+  it(`isUnPositiveInteger('--3') === false`, function () {
+    isUnPositiveInteger('--3').should.equal(false);
+  });
+
+  // '-3-3'
+  it(`isUnPositiveInteger('-3-3') === false`, function () {
+    isUnPositiveInteger('-3-3').should.equal(false);
+  });
+
+  // -.3
+  it(`isUnPositiveInteger(-.3, {isStrict: true}) === false`, function () {
+    isUnPositiveInteger(-.3, {isStrict: true}).should.equal(false);
+  });
+
+  // -3
+  it(`isUnPositiveInteger(-3, {isStrict: true}) === true`, function () {
+    isUnPositiveInteger(-3, {isStrict: true}).should.equal(true);
+  });
+
+  // -3.
+  it(`isUnPositiveInteger(-3., {isStrict: true}) === true`, function () {
+    isUnPositiveInteger(-3., {isStrict: true}).should.equal(true);
   });
 
   // -3.3
@@ -103,19 +212,24 @@ describe('isUnPositiveInteger test', function () {
     isUnPositiveInteger(-3.3, {isStrict: true}).should.equal(false);
   });
 
+  // '-.3'
+  it(`isUnPositiveInteger('-.3', {isStrict: true}) === false`, function () {
+    isUnPositiveInteger('-.3', {isStrict: true}).should.equal(false);
+  });
+
+  // '-3'
+  it(`isUnPositiveInteger('-3', {isStrict: true}) === false`, function () {
+    isUnPositiveInteger('-3', {isStrict: true}).should.equal(false);
+  });
+
+  // '-3.'
+  it(`isUnPositiveInteger('-3.', {isStrict: true}) === false`, function () {
+    isUnPositiveInteger('-3.', {isStrict: true}).should.equal(false);
+  });
+
   // '-3.3'
   it(`isUnPositiveInteger('-3.3', {isStrict: true}) === false`, function () {
     isUnPositiveInteger('-3.3', {isStrict: true}).should.equal(false);
-  });
-
-  // Number.POSITIVE_INFINITY
-  it(`isUnPositiveInteger(Number.POSITIVE_INFINITY) === false`, function () {
-    isUnPositiveInteger(Number.POSITIVE_INFINITY).should.equal(false);
-  });
-
-  // Number.POSITIVE_INFINITY
-  it(`isUnPositiveInteger(Number.POSITIVE_INFINITY, {isStrict: true}) === false`, function () {
-    isUnPositiveInteger(Number.POSITIVE_INFINITY, {isStrict: true}).should.equal(false);
   });
 
   // ''
@@ -151,5 +265,45 @@ describe('isUnPositiveInteger test', function () {
   // -Infinity
   it(`isUnPositiveInteger(-Infinity) === false`, function () {
     isUnPositiveInteger(Number.NEGATIVE_INFINITY).should.equal(false);
+  });
+
+  // Object(3)
+  it(`isUnPositiveInteger(Object(3)) === false`, function () {
+    isUnPositiveInteger(Object(3)).should.equal(false);
+  });
+
+  // Object('3')
+  it(`isUnPositiveInteger(Object('3')) === false`, function () {
+    isUnPositiveInteger(Object('3')).should.equal(false);
+  });
+
+  // Object(3)
+  it(`isUnPositiveInteger(Object(3), {isStrict: true}) === false`, function () {
+    isUnPositiveInteger(Object(3), {isStrict: true}).should.equal(false);
+  });
+
+  // Object('3')
+  it(`isUnPositiveInteger(Object('3'), {isStrict: true}) === false`, function () {
+    isUnPositiveInteger(Object('3'), {isStrict: true}).should.equal(false);
+  });
+
+  // Object(-3)
+  it(`isUnPositiveInteger(Object(-3)) === true`, function () {
+    isUnPositiveInteger(Object(-3)).should.equal(true);
+  });
+
+  // Object('-3')
+  it(`isUnPositiveInteger(Object('-3')) === true`, function () {
+    isUnPositiveInteger(Object('-3')).should.equal(true);
+  });
+
+  // Object(-3)
+  it(`isUnPositiveInteger(Object(-3), {isStrict: true}) === true`, function () {
+    isUnPositiveInteger(Object(-3), {isStrict: true}).should.equal(true);
+  });
+
+  // Object('-3')
+  it(`isUnPositiveInteger(Object('-3'), {isStrict: true}) === false`, function () {
+    isUnPositiveInteger(Object('-3'), {isStrict: true}).should.equal(false);
   });
 });

@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isUnEmptyString test', function () {
+describe('isUnEmptyString', function () {
   // 3
   it(`isUnEmptyString(3) === false`, function () {
     isUnEmptyString(3).should.equal(false);
@@ -28,19 +27,19 @@ describe('isUnEmptyString test', function () {
     isUnEmptyString('').should.equal(false);
   });
 
+  // ' '
+  it(`isUnEmptyString(' ') === false`, function () {
+    isUnEmptyString(' ').should.equal(false);
+  });
+
   // ''
   it(`isUnEmptyString('', {isStrict: false}) === false`, function () {
     isUnEmptyString('', {isStrict: false}).should.equal(false);
   });
 
-  // '   '
-  it(`isUnEmptyString('   ') === false`, function () {
-    isUnEmptyString('   ').should.equal(false);
-  });
-
-  // '   '
-  it(`isUnEmptyString('   ', {isStrict: false}) === true`, function () {
-    isUnEmptyString('   ', {isStrict: false}).should.equal(true);
+  // ' '
+  it(`isUnEmptyString(' ', {isStrict: false}) === true`, function () {
+    isUnEmptyString(' ', {isStrict: false}).should.equal(true);
   });
 
   // null

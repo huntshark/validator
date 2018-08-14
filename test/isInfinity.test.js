@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isInfinity test', function () {
+describe('isInfinity', function () {
   // Infinity
   it(`isInfinity(Infinity) === true`, function () {
     isInfinity(Number.POSITIVE_INFINITY).should.equal(true);
@@ -31,6 +30,11 @@ describe('isInfinity test', function () {
   // undefined
   it(`isInfinity(undefined) === false`, function () {
     isInfinity(undefined).should.equal(false);
+  });
+
+  // 0
+  it(`isInfinity(0) === false`, function () {
+    isInfinity(0).should.equal(false);
   });
 
   // 3

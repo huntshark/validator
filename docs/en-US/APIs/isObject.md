@@ -21,9 +21,8 @@ jxmValidator.isObject([]); // => false
 jxmValidator.isObject(parseInt); // => false
 jxmValidator.isObject(new Date()); // => false
 
+jxmValidator.isObject(Object('3')); // => false
 jxmValidator.isObject(Object({})); // => true
-jxmValidator.isObject(Object('3'); // => false
-jxmValidator.isObject(new Object('3')); // => false
 
 jxmValidator.isObject(null); // => false
 jxmValidator.isObject(Object.create(null)); // => true

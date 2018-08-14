@@ -1,5 +1,6 @@
 
 var _isObject = require('./isObject');
+var _isNumber = require('./isNumber');
 var _isRealNumber = require('./isRealNumber');
 
 /**
@@ -27,17 +28,21 @@ var _isRealNumber = require('./isRealNumber');
  * @param   {Object}  options          可选参数
  * @param   {Boolean} options.isStrict 是否严格模式
  * @return  {Boolean} 返回校验结果
- * @version 0.0.5
+ * @version 0.0.7
  * @since   0.0.4
  */
 function _isZero(val, options) {
   var opts = _isObject(options) ? options : {};
 
-  if (opts.isStrict === true) {
-    return val === 0;
+  if (_isNumber(val)) {
+    return val - 0 === 0;
   }
 
-  return _isRealNumber(val) && val - 0 === 0;
+  if (opts.isStrict !== true) {
+    return _isRealNumber(val) && val - 0 === 0;
+  }
+
+  return false;
 }
 
 module.exports = _isZero;

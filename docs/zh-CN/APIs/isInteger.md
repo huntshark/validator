@@ -36,10 +36,18 @@
 #### 示例：
 
 ```javascript
+jxmValidator.isInteger(.3); // => false
 jxmValidator.isInteger(3); // => true
+jxmValidator.isInteger(3.3); // => false
+jxmValidator.isInteger('.3'); // => false
 jxmValidator.isInteger('3'); // => true
+jxmValidator.isInteger('3.3'); // => false
+jxmValidator.isInteger(.3, {isStrict: true}); // => false
 jxmValidator.isInteger(3, {isStrict: true}); // => true
+jxmValidator.isInteger(3.3, {isStrict: true}); // => false
+jxmValidator.isInteger('.3', {isStrict: true}); // => false
 jxmValidator.isInteger('3', {isStrict: true}); // => false
+jxmValidator.isInteger('3.3', {isStrict: true}); // => false
 
 jxmValidator.isInteger(0); // => true
 jxmValidator.isInteger('0'); // => true
@@ -50,16 +58,6 @@ jxmValidator.isInteger(-3); // => true
 jxmValidator.isInteger('-3'); // => true
 jxmValidator.isInteger(-3, {isStrict: true}); // => true
 jxmValidator.isInteger('-3', {isStrict: true}); // => false
-
-jxmValidator.isInteger(3.3); // => false
-jxmValidator.isInteger('3.3'); // => false
-jxmValidator.isInteger(3.3, {isStrict: true}); // => false
-jxmValidator.isInteger('3.3', {isStrict: true}); // => false
-
-jxmValidator.isInteger(-3.3); // => false
-jxmValidator.isInteger('-3.3'); // => false
-jxmValidator.isInteger(-3.3, {isStrict: true}); // => false
-jxmValidator.isInteger('-3.3', {isStrict: true}); // => false
 
 jxmValidator.isInteger(''); // => false
 jxmValidator.isInteger('   '); // => false

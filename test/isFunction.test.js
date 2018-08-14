@@ -6,8 +6,7 @@ const should = chai.should;
 chai.use(require('chai-things'));
 should();
 
-// Test
-describe('isFunction test', function () {
+describe('isFunction', function () {
   // []
   it(`isFunction([]) === false`, function () {
     isFunction([]).should.equal(false);

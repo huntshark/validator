@@ -54,13 +54,8 @@ jxmValidator.isUnZero('   '); // => false
 jxmValidator.isUnZero(null); // => false
 jxmValidator.isUnZero(undefined); // => false
 
-jxmValidator.isUnZero(Number(0)); // => false
-jxmValidator.isUnZero(Number(3)); // => true
-jxmValidator.isUnZero(new Number(0)); // => false
-jxmValidator.isUnZero(new Number('0')); // => false
-jxmValidator.isUnZero(new Number(3)); // => true
-
 jxmValidator.isUnZero(Object(3)); // => true
 jxmValidator.isUnZero(Object('3')); // => true
+jxmValidator.isUnZero(Object(3, {isStrict: true})); // => true
 jxmValidator.isUnZero(Object('3', {isStrict: true})); // => false
 ```
